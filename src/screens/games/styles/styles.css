@@ -166,14 +166,6 @@ li:hover .link-menu,
     object-fit: cover;
   }
 
-  /* Estilização dos botões */
-  .button-container {
-    top: 85%;
-    position: absolute;
-    z-index: 1; /* Garante que os botões fiquem acima do vídeo */
-    gap: 20px;
-  }
-
   .btn {
     color: #fff;
     padding: 10px 20px;
@@ -222,14 +214,6 @@ li:hover .link-menu,
     max-width: 100%;
     max-height: 30%;
     object-fit: cover;
-  }
-
-  /* Estilização dos botões */
-  .button-container {
-    top: 80%;
-    position: absolute;
-    z-index: 1;
-    gap: 20px;
   }
 
   .btn {
@@ -283,14 +267,6 @@ li:hover .link-menu,
     object-fit: cover;
   }
 
-  /* Estilização dos botões */
-  .button-container {
-    top: 80%;
-    position: absolute;
-    z-index: 1;
-    gap: 20px;
-  }
-
   .btn {
     color: #fff;
     padding: 10px 20px;
@@ -339,14 +315,6 @@ li:hover .link-menu,
     max-width: 100%;
     max-height: 30%;
     object-fit: cover;
-  }
-
-  /* Estilização dos botões */
-  .button-container {
-    top: 80%;
-    position: absolute;
-    z-index: 1;
-    gap: 20px;
   }
 
   .btn {
