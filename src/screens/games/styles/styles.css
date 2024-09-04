@@ -323,6 +323,7 @@ li:hover .link-menu,
     border-radius: 5px;
     font-size: 12px;
     width: 120px;
+    height: 40px;
     background-color: rgba(0, 0, 0, 0.5);
   }
 
