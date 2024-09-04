@@ -107,7 +107,7 @@
   .video-container {
     background-color: black;
     width: 100%;
-    height: 82%; /* Ocupará toda a altura da .manual-container */
+    height: 100%; /* Ocupará toda a altura da .manual-container */
     position: absolute;
     top: 0;
     left: 0;
@@ -120,7 +120,7 @@
   }
 
   .button-container {
-    top: 83%;
+    top: 85%;
     position: absolute;
     z-index: 1;
     gap: 20px;
