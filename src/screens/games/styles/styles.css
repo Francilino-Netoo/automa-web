@@ -168,7 +168,7 @@ li:hover .link-menu,
 
   /* Estilização dos botões */
   .button-container {
-    top: 90%;
+    top: 85%;
     position: absolute;
     z-index: 1; /* Garante que os botões fiquem acima do vídeo */
     gap: 20px;
