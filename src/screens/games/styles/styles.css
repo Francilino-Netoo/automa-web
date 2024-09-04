@@ -161,7 +161,11 @@ li:hover .link-menu,
     transition: color 0.3s;
   }
   .openbtn:hover {
-    background: linear-gradient(to right, #fff, #fff);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.938),
+      rgba(255, 255, 255, 0.8)
+    );
     color: #000;
   }
   .side-menu a:hover {
@@ -282,6 +286,26 @@ li:hover .link-menu,
     max-width: 100%;
     max-height: 30%;
     object-fit: cover;
+  }
+  .openbtn {
+    font-size: 35px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: none;
+    transition: color 0.3s;
+    border-radius: 10px;
+  }
+  .openbtn {
+    display: block;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.938),
+      rgba(255, 255, 255, 0.8)
+    );
+    color: #000;
   }
 
   .btn {

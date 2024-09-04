@@ -17,7 +17,16 @@ body {
   left: 0;
   z-index: 1000;
 }
-
+/* CSS para ocultar elementos */
+.hidden {
+  display: none;
+}
+.visible {
+  display: none;
+}
+.openbtn {
+  display: none;
+}
 nav {
   display: flex;
   align-items: center;
@@ -229,7 +238,7 @@ footer h5 {
     right: -250px;
     background-color: #333;
     width: 80%;
-    background: linear-gradient(to right, #116574, #c122f1);
+    background: linear-gradient(to right, #95abaf, #c122f1);
     overflow-x: hidden;
     padding-top: 100px;
     z-index: 1000;
@@ -245,10 +254,7 @@ footer h5 {
     display: block;
     transition: color 0.3s;
   }
-  .openbtn:hover {
-    background: linear-gradient(to right, #fff, #fff);
-    color: #000;
-  }
+
   .side-menu a:hover {
     color: #f1f1f1;
   }
@@ -397,11 +403,15 @@ footer h5 {
     z-index: 1000;
     display: none;
     transition: color 0.3s;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   .openbtn {
     display: block;
-    background: linear-gradient(to right, #fff, #fff);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.938),
+      rgba(255, 255, 255, 0.8)
+    );
     color: #000;
   }
 
