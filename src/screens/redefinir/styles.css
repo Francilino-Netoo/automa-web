@@ -10,6 +10,7 @@ body {
 }
 
 .recuperar-container {
+  margin: 1.5%;
   background: linear-gradient(
     to right,
     rgba(190, 43, 43, 0.6),
@@ -106,6 +107,7 @@ body {
 
 @media (max-width: 320px) {
   .recuperar-container {
+    margin: 1.5%;
     background: linear-gradient(
       to right,
       rgba(190, 43, 43, 0.6),
@@ -203,6 +205,7 @@ body {
 
 @media (max-width: 350px) {
   .recuperar-container {
+    margin: 1.5%;
     background: linear-gradient(
       to right,
       rgba(190, 43, 43, 0.6),
@@ -298,4 +301,3 @@ body {
     text-decoration: underline;
   }
 }
-.botoes{}
