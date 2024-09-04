@@ -1,124 +1,49 @@
 .manual-container {
   position: relative;
   width: 100%;
+  height: 100vh; /* Garante que a altura da tela seja ocupada */
+  overflow: hidden; /* Oculta qualquer conteúdo que saia da área definida */
+}
+
+.video-container {
+  background-color: black;
+  width: 100%;
+  height: 100%; /* O vídeo ocupa toda a altura disponível */
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container iframe {
+  width: 100%;
   height: 100%;
+  border: none;
+  object-fit: cover; /* O vídeo preenche o container mantendo a proporção */
 }
 
-.manual-container img {
-  max-width: 80%;
-  max-height: 60%;
-  object-fit: cover;
-  display: block; /* Ocultar a imagem quando o vídeo estiver ativo */
-}
+/* Ajustes para dispositivos menores */
 @media (max-width: 480px) {
-  .manual-container img {
-    max-width: 100%;
-    max-height: 80%;
-  }
-
-  .video-container {
-    background-color: black;
-    width: 100%;
-    height: 82%; /* Ocupará toda a altura da .manual-container */
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
   .button-container {
-    top: 83%;
+    top: 85%; /* Ajuste conforme necessário */
     position: absolute;
     z-index: 1;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 390px) {
-  .manual-container img {
-    max-width: 100%;
-    max-height: 80%;
-  }
-
-  .video-container {
-    background-color: black;
     width: 100%;
-    height: 80%; /* Ocupará toda a altura da .manual-container */
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  /* Estilização dos botões */
-  .button-container {
-    top: 83%;
-    position: absolute;
-    z-index: 1;
+    display: flex;
+    justify-content: center;
     gap: 20px;
   }
 }
 
 @media (max-width: 360px) {
-  .manual-container img {
-    max-width: 100%;
-    max-height: 80%;
-  }
-
-  .video-container {
-    background-color: black;
-    width: 100%;
-    height: 82%; /* Ocupará toda a altura da .manual-container */
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
   .button-container {
-    top: 83%;
-    position: absolute;
-    z-index: 1;
-    gap: 20px;
+    top: 85%; /* Ajuste conforme necessário */
   }
 }
 
 @media (max-width: 330px) {
-  .manual-container img {
-    max-width: 100%;
-    max-height: 80%;
-  }
-
-  .video-container {
-    background-color: black;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  /***/
   .button-container {
     margin-top: 10%;
     position: fixed;
