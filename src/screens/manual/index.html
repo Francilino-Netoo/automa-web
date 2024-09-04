@@ -13,6 +13,14 @@
 
   <body>
     <div class="caixa-principal" id="home">
+      <!-- Menu Lateral -->
+      <div class="side-menu hidden" id="side-menu">
+        <a href="#home">HOME</a>
+        <a href="#sobre">TUTORIAL</a>
+        <a href="#clinica">DESLOGAR</a>
+        <a href="#fale-comigo">CONTATO</a>
+      </div>
+      <span class="openbtn" onclick="toggleMenu()">☰</span>
       <nav>
         <ul>
           <li><a class="link-menu" href="#home">HOME</a></li>
@@ -119,6 +127,51 @@
         console.error("Erro ao verificar o token:");
         localStorage.removeItem("authToken");
         window.location.href = "../../../index.html";
+      });
+
+      function toggleMenu() {
+        const sideMenu = document.getElementById("side-menu");
+        const menuButton = document.querySelector(".openbtn");
+
+        if (sideMenu.classList.contains("hidden")) {
+          sideMenu.classList.remove("hidden");
+          menuButton.textContent = "✖";
+        } else {
+          sideMenu.classList.add("hidden");
+          menuButton.textContent = "☰";
+        }
+      }
+
+      function closeMenu() {
+        const sideMenu = document.getElementById("side-menu");
+        const menuButton = document.querySelector(".openbtn");
+
+        if (!sideMenu.classList.contains("hidden")) {
+          sideMenu.classList.add("hidden");
+          menuButton.textContent = "☰";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuLinks = document.querySelectorAll(".menu-link");
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            closeMenu();
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          const sideMenu = document.getElementById("side-menu");
+          const menuButton = document.querySelector(".openbtn");
+
+          if (
+            !sideMenu.contains(event.target) &&
+            !menuButton.contains(event.target) &&
+            !sideMenu.classList.contains("hidden")
+          ) {
+            closeMenu();
+          }
+        });
       });
     </script>
   </body>
