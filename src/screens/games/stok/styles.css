@@ -1,0 +1,16 @@
+.manual-container img {
+  max-width: 100%;
+  max-height: 80%; /* Ajuste conforme necessário */
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .manual-container img {
+    max-width: 100%;
+    max-height: 80%; /* Ajustado para dispositivos menores */
+  }
+
+  .button-container {
+    gap: 20px;
+  }
+}
