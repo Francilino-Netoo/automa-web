@@ -1,14 +1,14 @@
 .manual-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Garante que a altura da tela seja ocupada */
-  overflow: hidden; /* Oculta qualquer conteúdo que saia da área definida */
+  height: 100vh;
+  overflow: hidden;
 }
 
 .video-container {
   background-color: black;
   width: 100%;
-  height: 100%; /* O vídeo ocupa toda a altura disponível */
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -21,13 +21,12 @@
   width: 100%;
   height: 100%;
   border: none;
-  object-fit: cover; /* O vídeo preenche o container mantendo a proporção */
+  object-fit: cover;
 }
 
-/* Ajustes para dispositivos menores */
 @media (max-width: 480px) {
   .button-container {
-    top: 85%; /* Ajuste conforme necessário */
+    top: 85%;
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -39,7 +38,7 @@
 
 @media (max-width: 360px) {
   .button-container {
-    top: 85%; /* Ajuste conforme necessário */
+    top: 85%;
   }
 }
 

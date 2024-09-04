@@ -8,7 +8,7 @@
   max-width: 80%;
   max-height: 60%;
   object-fit: cover;
-  display: block; /* Ocultar a imagem quando o vídeo estiver ativo */
+  display: block;
 }
 @media (max-width: 480px) {
   .manual-container img {
@@ -19,7 +19,7 @@
   .video-container {
     background-color: black;
     width: 100%;
-    height: 82%; /* Ocupará toda a altura da .manual-container */
+    height: 82%;
     position: absolute;
     top: 0;
     left: 0;
@@ -48,7 +48,7 @@
   .video-container {
     background-color: black;
     width: 100%;
-    height: 80%; /* Ocupará toda a altura da .manual-container */
+    height: 80%;
     position: absolute;
     top: 0;
     left: 0;
@@ -60,7 +60,6 @@
     border: none;
   }
 
-  /* Estilização dos botões */
   .button-container {
     top: 83%;
     position: absolute;
@@ -78,7 +77,7 @@
   .video-container {
     background-color: black;
     width: 100%;
-    height: 82%; /* Ocupará toda a altura da .manual-container */
+    height: 82%;
     position: absolute;
     top: 0;
     left: 0;
