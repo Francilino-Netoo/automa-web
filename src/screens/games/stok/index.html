@@ -90,8 +90,8 @@
                 `;
                 updateButtonStates("IA Ligada", "Desligar IA");
                 videoContainer.classList.remove("hide");
-                projectImage.classList.add("hide");
-                imageLink.classList.add("hide");
+                videoContainer.style.display = "block"; // Oculta o vídeo
+                projectImage.style.display = "none"; // Exibe a imagem
               } else {
                 alert("Erro ao obter o link de vídeo.");
               }
@@ -117,8 +117,8 @@
           document.querySelector(".desligar").addEventListener("click", () => {
             updateButtonStates("Ligar IA", "IA Desligada");
             videoContainer.classList.add("hide");
-            projectImage.classList.remove("hide");
-            imageLink.classList.remove("hide");
+            videoContainer.style.display = "none"; // Oculta o vídeo
+            projectImage.style.display = "block"; // Exibe a imagem
           });
         };
 

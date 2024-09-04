@@ -55,19 +55,17 @@
       document.addEventListener("DOMContentLoaded", () => {
         const token =
           localStorage.getItem("authToken") || "Token não encontrado";
-
         const ligarButton = document.querySelector(".ligar");
         const desligarButton = document.querySelector(".desligar");
         const videoContainer = document.getElementById("video-container");
         const projectImage = document.getElementById("project-image");
-        const imageLink = document.getElementById("image-link");
 
         if (!token) {
           console.log("Nenhum token encontrado no localStorage.");
           window.location.href = "../../../../index.html";
           return;
         }
-        //
+
         const loadVideo = async () => {
           if (token) {
             try {
@@ -88,10 +86,9 @@
                     allowfullscreen
                   ></iframe>
                 `;
-                updateButtonStates("IA Ligada", "Desligar IA");
                 videoContainer.classList.remove("hide");
-                projectImage.classList.add("hide");
-                imageLink.classList.add("hide");
+                projectImage.style.display = "none"; // Oculta a imagem
+                videoContainer.style.display = "block"; // Exibe o vídeo
               } else {
                 alert("Erro ao obter o link de vídeo.");
               }
@@ -117,8 +114,8 @@
           document.querySelector(".desligar").addEventListener("click", () => {
             updateButtonStates("Ligar IA", "IA Desligada");
             videoContainer.classList.add("hide");
-            projectImage.classList.remove("hide");
-            imageLink.classList.remove("hide");
+            videoContainer.style.display = "none"; // Oculta o vídeo
+            projectImage.style.display = "block"; // Exibe a imagem
           });
         };
 
