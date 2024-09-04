@@ -73,7 +73,7 @@
         }
 
         const loadVideo = async () => {
-          closeMenu(); // Fechar o menu ao clicar em "Ligar IA"
+          closeMenu();
           if (token) {
             try {
               const response = await fetch(
@@ -84,10 +84,12 @@
               );
               const data = await response.json();
               if (data.videoUrl) {
+                console.log(data.videoUrl);
                 videoContainer.innerHTML = `<iframe src="${data.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-                videoContainer.classList.remove("hidden");
-                videoContainer.classList.add("visible");
-                projectImage.classList.add("hidden");
+                videoContainer.classList.remove("hide");
+                projectImage.classList.add("hide");
+                ligarButton.textContent = "IA Ligada";
+                desligarButton.textContent = "Desligar IA";
               } else {
                 alert("Erro ao obter o link de vídeo.");
               }
@@ -99,23 +101,15 @@
           }
         };
 
-        const updateButtonStates = (ligarText, desligarText) => {
-          const buttonContainer = document.querySelector(".button-container");
-          buttonContainer.innerHTML = `
-            <button class="btn ligar">${ligarText}</button>
-            <button class="btn desligar">${desligarText}</button>
-          `;
-          attachButtonEvents();
-        };
-
         const attachButtonEvents = () => {
-          document.querySelector(".ligar").addEventListener("click", loadVideo);
-          document.querySelector(".desligar").addEventListener("click", () => {
-            closeMenu(); // Fechar o menu ao clicar em "Desligar IA"
-            updateButtonStates("Ligar IA", "IA Desligada");
-            videoContainer.classList.add("hidden");
-            videoContainer.classList.remove("visible");
-            projectImage.classList.remove("hidden");
+          ligarButton.addEventListener("click", loadVideo);
+          desligarButton.addEventListener("click", () => {
+            closeMenu();
+            videoContainer.innerHTML = "";
+            videoContainer.classList.add("hide");
+            projectImage.classList.remove("hide");
+            ligarButton.textContent = "Ligar IA";
+            desligarButton.textContent = "IA Desligada";
           });
         };
 

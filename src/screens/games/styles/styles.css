@@ -22,7 +22,9 @@ body {
   left: 0;
   z-index: 1000;
 }
-
+.side-menu {
+  display: none;
+}
 nav {
   display: flex;
   align-items: center;
