@@ -131,6 +131,69 @@ li:hover .link-menu,
 
 /*************************/
 @media (max-width: 480px) {
+  nav {
+    display: none;
+  }
+  /* Estilo do Menu Lateral */
+  .side-menu {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: -250px;
+    background-color: #333;
+    width: 80%;
+    background: linear-gradient(to right, #116574, #c122f1);
+    overflow-x: hidden;
+    padding-top: 100px;
+    z-index: 1000;
+
+    transition: right 0.5s;
+  }
+
+  .side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    transition: color 0.3s;
+  }
+  .openbtn:hover {
+    background: linear-gradient(to right, #fff, #fff);
+    color: #000;
+  }
+  .side-menu a:hover {
+    color: #f1f1f1;
+  }
+
+  .side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .openbtn {
+    font-size: 35px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: none;
+    transition: color 0.3s;
+    border-radius: 5px;
+  }
+  .openbtn {
+    display: block;
+    background: linear-gradient(to right, #fff, #fff);
+    color: #000;
+  }
+
+  .side-menu {
+    left: 0;
+  }
   li {
     font-size: 12px;
     margin-right: 5px;
@@ -181,6 +244,9 @@ li:hover .link-menu,
 }
 /*************************/
 @media (max-width: 390px) {
+  nav {
+    display: none;
+  }
   li {
     font-size: 12px;
     margin-right: 5px;
@@ -232,6 +298,9 @@ li:hover .link-menu,
 
 /*************************/
 @media (max-width: 360px) {
+  nav {
+    display: none;
+  }
   li {
     font-size: 12px;
     margin-right: 5px;
@@ -283,6 +352,9 @@ li:hover .link-menu,
 
 /*************************/
 @media (max-width: 330px) {
+  nav {
+    display: none;
+  }
   li {
     font-size: 10px;
     margin-right: 7px;

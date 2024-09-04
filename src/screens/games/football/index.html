@@ -57,20 +57,19 @@
       document.addEventListener("DOMContentLoaded", () => {
         const token =
           localStorage.getItem("authToken") || "Token não encontrado";
-
         const ligarButton = document.querySelector(".ligar");
         const desligarButton = document.querySelector(".desligar");
         const videoContainer = document.getElementById("video-container");
         const projectImage = document.getElementById("project-image");
-        const imageLink = document.getElementById("image-link");
 
         if (!token) {
           console.log("Nenhum token encontrado no localStorage.");
-          window.location.href = "../../login/index.html";
+          window.location.href = "../../../../index.html";
           return;
         }
 
         const loadVideo = async () => {
+          closeMenu(); // Fechar o menu ao clicar em "Ligar IA"
           if (token) {
             try {
               const response = await fetch(
@@ -79,22 +78,12 @@
                 )}`,
                 { method: "GET" }
               );
-
               const data = await response.json();
-
               if (data.videoUrl) {
-                // Atualiza o conteúdo com o vídeo
-                videoContainer.innerHTML = `
-                  <iframe
-                    src="${data.videoUrl}"
-                    frameborder="0"
-                   
-                  ></iframe>
-                `;
-                updateButtonStates("IA Ligada", "Desligar IA");
-                videoContainer.classList.remove("hide");
-                videoContainer.style.display = "block"; // Oculta o vídeo
-                projectImage.style.display = "none"; // Exibe a imagem
+                videoContainer.innerHTML = `<iframe src="${data.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+                videoContainer.classList.remove("hidden");
+                videoContainer.classList.add("visible");
+                projectImage.classList.add("hidden");
               } else {
                 alert("Erro ao obter o link de vídeo.");
               }
@@ -112,20 +101,64 @@
             <button class="btn ligar">${ligarText}</button>
             <button class="btn desligar">${desligarText}</button>
           `;
-          attachButtonEvents(); // Atualiza os eventos dos botões
+          attachButtonEvents();
         };
 
         const attachButtonEvents = () => {
           document.querySelector(".ligar").addEventListener("click", loadVideo);
           document.querySelector(".desligar").addEventListener("click", () => {
+            closeMenu(); // Fechar o menu ao clicar em "Desligar IA"
             updateButtonStates("Ligar IA", "IA Desligada");
-            videoContainer.classList.add("hide");
-            videoContainer.style.display = "none"; // Oculta o vídeo
-            projectImage.style.display = "block"; // Exibe a imagem
+            videoContainer.classList.add("hidden");
+            videoContainer.classList.remove("visible");
+            projectImage.classList.remove("hidden");
           });
         };
 
-        attachButtonEvents(); // Anexa eventos ao carregar a página
+        attachButtonEvents();
+      });
+
+      function toggleMenu() {
+        const sideMenu = document.getElementById("side-menu");
+        const menuButton = document.querySelector(".openbtn");
+        if (sideMenu.classList.contains("hidden")) {
+          sideMenu.classList.remove("hidden");
+          sideMenu.classList.add("visible");
+          menuButton.textContent = "✖";
+        } else {
+          sideMenu.classList.remove("visible");
+          sideMenu.classList.add("hidden");
+          menuButton.textContent = "☰";
+        }
+      }
+
+      function closeMenu() {
+        const sideMenu = document.getElementById("side-menu");
+        const menuButton = document.querySelector(".openbtn");
+        if (!sideMenu.classList.contains("hidden")) {
+          sideMenu.classList.remove("visible");
+          sideMenu.classList.add("hidden");
+          menuButton.textContent = "☰";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuLinks = document.querySelectorAll(".side-menu a");
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("click", (event) => {
+          const sideMenu = document.getElementById("side-menu");
+          const menuButton = document.querySelector(".openbtn");
+          if (
+            !sideMenu.contains(event.target) &&
+            !menuButton.contains(event.target) &&
+            !sideMenu.classList.contains("hidden")
+          ) {
+            closeMenu();
+          }
+        });
       });
     </script>
   </body>

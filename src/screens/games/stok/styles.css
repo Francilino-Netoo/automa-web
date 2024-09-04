@@ -1,7 +1,7 @@
 .manual-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* Garante que a altura da tela seja ocupada */
   overflow: hidden;
 }
 
@@ -25,6 +25,14 @@
 }
 
 @media (max-width: 480px) {
+  /* CSS para ocultar elementos */
+  .hidden {
+    display: none;
+  }
+  .visible {
+    display: block;
+  }
+
   .button-container {
     top: 85%;
     position: absolute;

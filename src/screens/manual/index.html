@@ -17,7 +17,7 @@
       <div class="side-menu hidden" id="side-menu">
         <a href="#home">HOME</a>
         <a href="#sobre">TUTORIAL</a>
-        <a href="#clinica">DESLOGAR</a>
+        <a href="#logout" id="logout">DESLOGAR</a>
         <a href="#fale-comigo">CONTATO</a>
       </div>
       <span class="openbtn" onclick="toggleMenu()">☰</span>
@@ -132,11 +132,12 @@
       function toggleMenu() {
         const sideMenu = document.getElementById("side-menu");
         const menuButton = document.querySelector(".openbtn");
-
         if (sideMenu.classList.contains("hidden")) {
           sideMenu.classList.remove("hidden");
+          sideMenu.classList.add("visible");
           menuButton.textContent = "✖";
         } else {
+          sideMenu.classList.remove("visible");
           sideMenu.classList.add("hidden");
           menuButton.textContent = "☰";
         }
@@ -145,8 +146,8 @@
       function closeMenu() {
         const sideMenu = document.getElementById("side-menu");
         const menuButton = document.querySelector(".openbtn");
-
         if (!sideMenu.classList.contains("hidden")) {
+          sideMenu.classList.remove("visible");
           sideMenu.classList.add("hidden");
           menuButton.textContent = "☰";
         }
@@ -155,15 +156,12 @@
       document.addEventListener("DOMContentLoaded", () => {
         const menuLinks = document.querySelectorAll(".menu-link");
         menuLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            closeMenu();
-          });
+          link.addEventListener("click", closeMenu);
         });
 
         document.addEventListener("click", (event) => {
           const sideMenu = document.getElementById("side-menu");
           const menuButton = document.querySelector(".openbtn");
-
           if (
             !sideMenu.contains(event.target) &&
             !menuButton.contains(event.target) &&

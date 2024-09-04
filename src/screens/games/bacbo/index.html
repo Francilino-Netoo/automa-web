@@ -11,24 +11,32 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
-      /* CSS para ocultar elementos */
       .hide {
         display: none;
       }
     </style>
   </head>
-
   <body>
     <div class="caixa-principal" id="home">
+      <!-- Menu Lateral -->
+      <div class="side-menu hidden" id="side-menu">
+        <a href="../../manual/index.html">HOME</a>
+        <a href="#sobre">TUTORIAL</a>
+        <a href="#clinica">DESLOGAR</a>
+        <a href="../../manual/index.html">CONTATO</a>
+        <div class="button-container">
+          <button class="btn ligar">Ligar IA</button>
+          <button class="btn desligar">IA Desligada</button>
+        </div>
+      </div>
+      <span class="openbtn" onclick="toggleMenu()">☰</span>
       <nav>
         <ul>
           <li><a class="link-menu" href="../../manual/index.html">HOME</a></li>
           <li><a class="link-menu" href="#sobre">TUTORIAL</a></li>
-
           <li>
             <a class="link-menu" href="../../manual/index.html">CONTATO</a>
           </li>
-
           <li><a class="link-menu" href="#fale-comigo">DESLOGAR</a></li>
         </ul>
       </nav>
@@ -40,12 +48,7 @@
               src="../../../image/telinhas/bac.png"
               alt="Projeto Bac Bo"
             />
-
-            <div class="video-container hide" id="video-container"></div>
-            <div class="button-container">
-              <button class="btn ligar">Ligar IA</button>
-              <button class="btn desligar">IA Desligada</button>
-            </div>
+            <div class="video-container hidden" id="video-container"></div>
           </div>
         </div>
       </div>
@@ -67,6 +70,7 @@
         }
 
         const loadVideo = async () => {
+          closeMenu(); // Fechar o menu ao clicar em "Ligar IA"
           if (token) {
             try {
               const response = await fetch(
@@ -75,20 +79,12 @@
                 )}`,
                 { method: "GET" }
               );
-
               const data = await response.json();
-
               if (data.videoUrl) {
-                videoContainer.innerHTML = `
-                  <iframe
-                    src="${data.videoUrl}"
-                    frameborder="0"
-                    allowfullscreen
-                  ></iframe>
-                `;
-                videoContainer.classList.remove("hide");
-                projectImage.style.display = "none"; // Oculta a imagem
-                videoContainer.style.display = "block"; // Exibe o vídeo
+                videoContainer.innerHTML = `<iframe src="${data.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+                videoContainer.classList.remove("hidden");
+                videoContainer.classList.add("visible");
+                projectImage.classList.add("hidden");
               } else {
                 alert("Erro ao obter o link de vídeo.");
               }
@@ -112,14 +108,58 @@
         const attachButtonEvents = () => {
           document.querySelector(".ligar").addEventListener("click", loadVideo);
           document.querySelector(".desligar").addEventListener("click", () => {
+            closeMenu(); // Fechar o menu ao clicar em "Desligar IA"
             updateButtonStates("Ligar IA", "IA Desligada");
-            videoContainer.classList.add("hide");
-            videoContainer.style.display = "none"; // Oculta o vídeo
-            projectImage.style.display = "block"; // Exibe a imagem
+            videoContainer.classList.add("hidden");
+            videoContainer.classList.remove("visible");
+            projectImage.classList.remove("hidden");
           });
         };
 
         attachButtonEvents();
+      });
+
+      function toggleMenu() {
+        const sideMenu = document.getElementById("side-menu");
+        const menuButton = document.querySelector(".openbtn");
+        if (sideMenu.classList.contains("hidden")) {
+          sideMenu.classList.remove("hidden");
+          sideMenu.classList.add("visible");
+          menuButton.textContent = "✖";
+        } else {
+          sideMenu.classList.remove("visible");
+          sideMenu.classList.add("hidden");
+          menuButton.textContent = "☰";
+        }
+      }
+
+      function closeMenu() {
+        const sideMenu = document.getElementById("side-menu");
+        const menuButton = document.querySelector(".openbtn");
+        if (!sideMenu.classList.contains("hidden")) {
+          sideMenu.classList.remove("visible");
+          sideMenu.classList.add("hidden");
+          menuButton.textContent = "☰";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuLinks = document.querySelectorAll(".side-menu a");
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("click", (event) => {
+          const sideMenu = document.getElementById("side-menu");
+          const menuButton = document.querySelector(".openbtn");
+          if (
+            !sideMenu.contains(event.target) &&
+            !menuButton.contains(event.target) &&
+            !sideMenu.classList.contains("hidden")
+          ) {
+            closeMenu();
+          }
+        });
       });
     </script>
   </body>
