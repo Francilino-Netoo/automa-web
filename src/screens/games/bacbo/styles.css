@@ -11,10 +11,9 @@
   }
 
   .video-container {
-    margin-top: 10vh;
     background-color: black;
     width: 100%;
-    height: calc(70vh - 10px);
+    height: calc(100vh - 10px);
     position: relative;
   }
 
