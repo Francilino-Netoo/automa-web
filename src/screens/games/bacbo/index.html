@@ -39,10 +39,6 @@
           </li>
           <li><a class="link-menu" href="#fale-comigo">DESLOGAR</a></li>
         </ul>
-        <div class="button-container">
-          <button class="btn ligar">Ligar IA</button>
-          <button class="btn desligar">IA Desligada</button>
-        </div>
       </nav>
       <div class="imagens-container-wrapper">
         <div class="imagens-container" id="content-area">
@@ -53,6 +49,12 @@
               alt="Projeto Bac Bo"
             />
             <div class="video-container hidden" id="video-container"></div>
+            <div class="ocultar">
+              <div class="button-container">
+                <button class="btn ligar">Ligar IA</button>
+                <button class="btn desligar">IA Desligada</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -85,6 +87,7 @@
               );
               const data = await response.json();
               if (data.videoUrl) {
+                console.log(data.videoUrl);
                 videoContainer.innerHTML = `<iframe src="${data.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
                 videoContainer.classList.remove("hidden");
                 videoContainer.classList.add("visible");

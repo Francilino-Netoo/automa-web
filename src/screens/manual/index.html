@@ -91,7 +91,6 @@
 
           if (response.ok) {
             const data = await response.json();
-            console.log(data);
 
             if (data.message === "true") {
               return;
@@ -104,8 +103,6 @@
             window.location.href = "../../../index.html";
           }
         } catch (error) {
-          console.error("Erro ao verificar o token:", error);
-
           localStorage.removeItem("authToken");
           window.location.href = "../../../index.html";
         }
@@ -117,14 +114,11 @@
         if (token) {
           await verifyToken(token);
         } else {
-          console.error("Erro ao verificar o token:");
-
           window.location.href = "../../../index.html";
         }
       };
 
       document.getElementById("logout").addEventListener("click", () => {
-        console.error("Erro ao verificar o token:");
         localStorage.removeItem("authToken");
         window.location.href = "../../../index.html";
       });

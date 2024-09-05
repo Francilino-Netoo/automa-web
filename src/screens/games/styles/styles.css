@@ -22,7 +22,16 @@ body {
   left: 0;
   z-index: 1000;
 }
-.side-menu {
+.side-menu #hidden {
+  display: none;
+}
+.hidden {
+  display: none;
+}
+.visible {
+  display: none;
+}
+.openbtn {
   display: none;
 }
 nav {
@@ -95,12 +104,17 @@ li:hover .link-menu,
   max-height: 80%;
   object-fit: cover;
 }
+.ocultar {
+  position: relative; /* Ou outro valor de posição apropriado */
+  z-index: 1; /* Certifique-se de que tenha um z-index adequado para ser clicável */
+}
 
 /* Estilização dos botões */
 .button-container {
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin-bottom: 15%;
 }
 
 .btn {
@@ -134,6 +148,9 @@ li:hover .link-menu,
 /*************************/
 @media (max-width: 480px) {
   nav {
+    display: none;
+  }
+  .ocultar {
     display: none;
   }
   /* Estilo do Menu Lateral */
@@ -253,6 +270,9 @@ li:hover .link-menu,
   nav {
     display: none;
   }
+  .ocultar {
+    display: none;
+  }
   li {
     font-size: 12px;
     margin-right: 5px;
@@ -327,6 +347,9 @@ li:hover .link-menu,
   nav {
     display: none;
   }
+  .ocultar {
+    display: none;
+  }
   li {
     font-size: 12px;
     margin-right: 5px;
@@ -379,6 +402,9 @@ li:hover .link-menu,
 /*************************/
 @media (max-width: 330px) {
   nav {
+    display: none;
+  }
+  .ocultar {
     display: none;
   }
   li {
