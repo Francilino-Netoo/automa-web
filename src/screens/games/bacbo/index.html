@@ -26,7 +26,7 @@
         <a href="#clinica">DESLOGAR</a>
         <div class="button-container">
           <button class="btn ligar">Ligar IA</button>
-          <button class="btn desligar">IA Desligada</button>
+          <button class="btn desligar">Desligar IA</button>
         </div>
       </div>
       <span class="openbtn" onclick="toggleMenu()">☰</span>
@@ -38,6 +38,10 @@
             <a class="link-menu" href="../../manual/index.html">CONTATO</a>
           </li>
           <li><a class="link-menu" href="#fale-comigo">DESLOGAR</a></li>
+          <li>
+            <button class="btn ligar">Ligar IA</button>
+            <button class="btn desligar">Desligar IA</button>
+          </li>
         </ul>
       </nav>
       <div class="imagens-container-wrapper">
@@ -49,12 +53,6 @@
               alt="Projeto Bac Bo"
             />
             <div class="video-container hidden" id="video-container"></div>
-            <div class="ocultar">
-              <div class="button-container">
-                <button class="btn ligar">Ligar IA</button>
-                <button class="btn desligar">IA Desligada</button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -64,8 +62,6 @@
       document.addEventListener("DOMContentLoaded", () => {
         const token =
           localStorage.getItem("authToken") || "Token não encontrado";
-        const ligarButton = document.querySelector(".ligar");
-        const desligarButton = document.querySelector(".desligar");
         const videoContainer = document.getElementById("video-container");
         const projectImage = document.getElementById("project-image");
 
@@ -92,6 +88,9 @@
                 videoContainer.classList.remove("hidden");
                 videoContainer.classList.add("visible");
                 projectImage.classList.add("hidden");
+                ligarButton.textContent = "Ligar IA";
+                desligarButton.textContent = "IA Desligada";
+                updateButtonStates("IA Ligada", "Desligar IA");
               } else {
                 alert("Erro ao obter o link de vídeo.");
               }
@@ -103,23 +102,31 @@
           }
         };
 
+        const closeVideo = () => {
+          videoContainer.innerHTML = ""; // Remove o conteúdo do videoContainer
+          videoContainer.classList.add("hidden");
+          videoContainer.classList.remove("visible");
+          projectImage.classList.remove("hidden");
+          updateButtonStates("Ligar IA", "IA Desligada");
+        };
+
         const updateButtonStates = (ligarText, desligarText) => {
-          const buttonContainer = document.querySelector(".button-container");
-          buttonContainer.innerHTML = `
-            <button class="btn ligar">${ligarText}</button>
-            <button class="btn desligar">${desligarText}</button>
-          `;
-          attachButtonEvents();
+          const ligarButton = document.querySelector(".btn.ligar");
+          const desligarButton = document.querySelector(".btn.desligar");
+          ligarButton.textContent = ligarText;
+          desligarButton.textContent = desligarText;
         };
 
         const attachButtonEvents = () => {
-          document.querySelector(".ligar").addEventListener("click", loadVideo);
-          document.querySelector(".desligar").addEventListener("click", () => {
-            closeMenu(); // Fechar o menu ao clicar em "Desligar IA"
-            updateButtonStates("Ligar IA", "IA Desligada");
-            videoContainer.classList.add("hidden");
-            videoContainer.classList.remove("visible");
-            projectImage.classList.remove("hidden");
+          const ligarButtons = document.querySelectorAll(".btn.ligar");
+          const desligarButtons = document.querySelectorAll(".btn.desligar");
+
+          ligarButtons.forEach((button) => {
+            button.addEventListener("click", loadVideo);
+          });
+
+          desligarButtons.forEach((button) => {
+            button.addEventListener("click", closeVideo);
           });
         };
 
@@ -149,25 +156,6 @@
           menuButton.textContent = "☰";
         }
       }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const menuLinks = document.querySelectorAll(".side-menu a");
-        menuLinks.forEach((link) => {
-          link.addEventListener("click", closeMenu);
-        });
-
-        document.addEventListener("click", (event) => {
-          const sideMenu = document.getElementById("side-menu");
-          const menuButton = document.querySelector(".openbtn");
-          if (
-            !sideMenu.contains(event.target) &&
-            !menuButton.contains(event.target) &&
-            !sideMenu.classList.contains("hidden")
-          ) {
-            closeMenu();
-          }
-        });
-      });
     </script>
   </body>
 </html>
