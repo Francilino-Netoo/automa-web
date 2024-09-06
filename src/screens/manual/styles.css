@@ -72,7 +72,16 @@ li:hover .link-menu,
   justify-content: center;
   margin-top: 100px;
 }
-
+.imagens-container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
 .imagens-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
