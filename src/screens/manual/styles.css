@@ -17,7 +17,7 @@ body {
   left: 0;
   z-index: 1000;
 }
-/* CSS para ocultar elementos */
+
 .hidden {
   display: none;
 }
@@ -61,7 +61,6 @@ li:hover .link-menu,
   border-color: #f9004d;
 }
 
-/* Contêiner principal */
 .meu-nome {
   position: relative;
   width: 100%;
@@ -223,14 +222,14 @@ footer h5 {
   nav {
     display: none;
   }
-  /* CSS para ocultar elementos */
+
   .hidden {
     display: none;
   }
   .visible {
     display: block;
   }
-  /* Estilo do Menu Lateral */
+
   .side-menu {
     height: 100%;
     position: absolute;
@@ -355,7 +354,7 @@ footer h5 {
   nav {
     display: none;
   }
-  /* Estilo do Menu Lateral */
+
   .side-menu {
     height: 100%;
     position: fixed;

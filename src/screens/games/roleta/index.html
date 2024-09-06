@@ -27,7 +27,6 @@
   </head>
   <body>
     <div class="caixa-principal" id="home">
-      <!-- Menu Lateral -->
       <div class="side-menu hidden" id="side-menu">
         <a href="../../manual/index.html">HOME</a>
         <a href="#sobre">TUTORIAL</a>
@@ -81,7 +80,7 @@
         }
 
         const loadVideo = async () => {
-          closeMenu(); // Fechar o menu ao clicar em "Ligar IA"
+          closeMenu();
           if (token) {
             try {
               const response = await fetch(
@@ -109,7 +108,7 @@
         };
 
         const closeVideo = () => {
-          videoContainer.innerHTML = ""; // Remove o conteúdo do videoContainer
+          videoContainer.innerHTML = "";
           videoContainer.classList.add("hide");
           projectImage.classList.remove("hide");
           updateButtonStates("Ligar IA", "IA Desligada");
@@ -133,7 +132,7 @@
           desligarButtons.forEach((button) => {
             button.addEventListener("click", () => {
               closeVideo();
-              closeMenu(); // Fechar o menu ao clicar em "Desligar IA"
+              closeMenu();
             });
           });
         };

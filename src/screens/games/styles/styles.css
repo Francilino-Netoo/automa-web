@@ -5,8 +5,8 @@ body {
   background: url("../../../image/cap.png") no-repeat center center fixed;
   background-size: cover;
   height: 100%;
-  overflow-x: hidden; /* Prevenir rolagem horizontal */
-  overflow-y: hidden; /* Prevenir rolagem horizontal */
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 *,
@@ -68,7 +68,6 @@ li:hover .link-menu,
   border-color: #f9004d;
 }
 
-/* Estilos para a área que contém as imagens */
 .imagens-container-wrapper {
   display: flex;
   justify-content: center;
@@ -96,7 +95,7 @@ li:hover .link-menu,
   width: 100%;
   max-width: 1000px;
   height: 100%;
-  overflow: hidden; /* Prevenir overflow dentro da manual-container */
+  overflow: hidden;
 }
 
 .manual-container img {
@@ -105,11 +104,10 @@ li:hover .link-menu,
   object-fit: cover;
 }
 .ocultar {
-  position: relative; /* Ou outro valor de posição apropriado */
-  z-index: 1; /* Certifique-se de que tenha um z-index adequado para ser clicável */
+  position: relative;
+  z-index: 1;
 }
 
-/* Estilização dos botões */
 .button-container {
   display: flex;
   justify-content: center;
@@ -153,7 +151,7 @@ li:hover .link-menu,
   .ocultar {
     display: none;
   }
-  /* Estilo do Menu Lateral */
+
   .side-menu {
     height: 100%;
     position: absolute;
@@ -229,7 +227,6 @@ li:hover .link-menu,
     line-height: 1.5;
   }
 
-  /* Estilos para a área que contém as imagens */
   .imagens-container-wrapper {
     width: 100vw;
     height: 100vh;
@@ -258,7 +255,7 @@ li:hover .link-menu,
     border-radius: 5px;
     font-size: 12px;
     width: 120px;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .btn:hover {
@@ -285,7 +282,6 @@ li:hover .link-menu,
     line-height: 1.5;
   }
 
-  /* Estilos para a área que contém as imagens */
   .imagens-container-wrapper {
     width: 100vw;
     height: 100vh;
@@ -362,7 +358,6 @@ li:hover .link-menu,
     line-height: 1;
   }
 
-  /* Estilos para a área que contém as imagens */
   .imagens-container-wrapper {
     width: 100vw;
     height: 100vh;
@@ -418,7 +413,6 @@ li:hover .link-menu,
     border-radius: 8px;
   }
 
-  /* Estilos para a área que contém as imagens */
   .imagens-container-wrapper {
     width: 100vw;
     height: 100vh;
