@@ -231,17 +231,17 @@ footer h5 {
   }
 
   .side-menu {
-    height: 100%;
+    height: 85vh;
     position: absolute;
     top: 0;
     right: -250px;
     background-color: #333;
     width: 80%;
-    background: linear-gradient(to right, #95abaf, #c122f1);
+    background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
     padding-top: 100px;
     z-index: 1000;
-
+    border-radius: 0 20px 20px 0;
     transition: right 0.5s;
   }
 
@@ -326,26 +326,26 @@ footer h5 {
   /*****************************/
   /*****************************/
   footer {
-    padding-top: 40px;
+    display: none;
   }
 
-  footer h5 {
-    font-size: 25px;
+  .contato {
+    margin-top: 110%;
+    padding-bottom: 1px;
+  }
+  .social1 {
+    display: flex;
   }
 
-  .social {
-    gap: 40px;
-  }
-
-  .social img {
+  .social1 img {
     height: 40px;
     border-radius: 50%;
   }
 
-  .social a {
+  .social1 a {
     border-radius: 50%;
     height: 40px;
-    width: 40px;
+    width: 25px;
   }
 }
 
@@ -356,19 +356,19 @@ footer h5 {
   }
 
   .side-menu {
-    height: 100%;
-    position: fixed;
+    height: 85vh;
+    position: absolute;
     top: 0;
     right: -250px;
     background-color: #333;
     width: 80%;
-    background: linear-gradient(to right, #116574, #c122f1);
+    background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
     padding-top: 100px;
     z-index: 1000;
+    border-radius: 0 20px 20px 0;
     transition: right 0.5s;
   }
-
   .side-menu a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
