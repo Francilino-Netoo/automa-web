@@ -302,12 +302,12 @@ footer h5 {
   }
 
   .imagens-container-wrapper {
-    margin-top: 60px;
+    margin-top: 5%;
   }
 
   .imagens-container {
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
+    gap: 50px;
   }
 
   .manual-container {
