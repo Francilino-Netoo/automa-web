@@ -14,6 +14,15 @@
       .hide {
         display: none;
       }
+      .visible {
+        display: block;
+      }
+      .side-menu.hidden {
+        display: none;
+      }
+      .side-menu.visible {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -52,7 +61,7 @@
               src="../../../image/telinhas/fut.png"
               alt="Projeto Bac Bo"
             />
-            <div class="video-container hidden" id="video-container"></div>
+            <div class="video-container hide" id="video-container"></div>
           </div>
         </div>
       </div>
@@ -85,11 +94,8 @@
               if (data.videoUrl) {
                 console.log(data.videoUrl);
                 videoContainer.innerHTML = `<iframe src="${data.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-                videoContainer.classList.remove("hidden");
-                videoContainer.classList.add("visible");
-                projectImage.classList.add("hidden");
-                ligarButton.textContent = "Ligar IA";
-                desligarButton.textContent = "IA Desligada";
+                videoContainer.classList.remove("hide");
+                projectImage.classList.add("hide");
                 updateButtonStates("IA Ligada", "Desligar IA");
               } else {
                 alert("Erro ao obter o link de vídeo.");
@@ -104,9 +110,8 @@
 
         const closeVideo = () => {
           videoContainer.innerHTML = ""; // Remove o conteúdo do videoContainer
-          videoContainer.classList.add("hidden");
-          videoContainer.classList.remove("visible");
-          projectImage.classList.remove("hidden");
+          videoContainer.classList.add("hide");
+          projectImage.classList.remove("hide");
           updateButtonStates("Ligar IA", "IA Desligada");
         };
 
@@ -126,7 +131,10 @@
           });
 
           desligarButtons.forEach((button) => {
-            button.addEventListener("click", closeVideo);
+            button.addEventListener("click", () => {
+              closeVideo();
+              closeMenu(); // Fechar o menu ao clicar em "Desligar IA"
+            });
           });
         };
 
