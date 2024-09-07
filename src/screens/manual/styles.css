@@ -251,7 +251,6 @@ footer h5 {
     overflow-y: hidden;
     padding-top: 15vh;
     z-index: 1000;
-
     transition: right 0.5s;
   }
 
