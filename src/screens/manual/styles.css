@@ -542,7 +542,7 @@ footer h5 {
     z-index: 1000;
     display: none;
     transition: color 0.3s;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   .openbtn {
     display: block;
