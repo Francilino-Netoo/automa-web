@@ -374,7 +374,6 @@ footer h5 {
     position: absolute;
     top: 0;
     right: -250px;
-    background-color: #333;
     width: 80%;
     background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
@@ -468,6 +467,135 @@ footer h5 {
 
   .contato {
     margin-top: 55vh;
+    padding-bottom: 1px;
+  }
+  .social1 {
+    display: flex;
+  }
+
+  .social1 img {
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .social1 a {
+    border-radius: 50%;
+    height: 40px;
+    width: 25px;
+  }
+}
+
+/*************************/
+@media (max-width: 360px) {
+  nav {
+    display: none;
+  }
+
+  .hidden {
+    display: none;
+  }
+  .visible {
+    display: block;
+  }
+
+  .side-menu {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: -250px;
+    width: 80%;
+    background: linear-gradient(to right, #020c92, #c122f1);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-top: 100px;
+    z-index: 1000;
+    transition: right 0.5s;
+  }
+
+  .side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    transition: color 0.3s;
+  }
+
+  .side-menu a:hover {
+    color: #f1f1f1;
+  }
+
+  .side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .openbtn {
+    font-size: 35px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: none;
+    transition: color 0.3s;
+    border-radius: 5px;
+  }
+  .openbtn {
+    display: block;
+    background: linear-gradient(to right, #fff, #fff);
+    color: #000;
+  }
+
+  .side-menu {
+    left: 0;
+  }
+  li {
+    font-size: 12px;
+    margin-right: 15px;
+  }
+
+  .link-menu {
+    padding: 3px 10px;
+    border-radius: 8px;
+    line-height: 1.5;
+  }
+
+  li {
+    margin-right: 12px;
+  }
+
+  .imagens-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+  }
+
+  .manual-container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(225, 1, 255, 0.8);
+    width: 130px;
+    height: 130px;
+  }
+
+  .manual-container img {
+    margin-bottom: 10px;
+    max-width: 100%;
+    max-height: 90%;
+  }
+  /*****************************/
+  /*****************************/
+  footer {
+    display: none;
+  }
+
+  .contato {
+    margin-top: 40vh;
     padding-bottom: 1px;
   }
   .social1 {
