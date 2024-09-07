@@ -381,7 +381,6 @@ footer h5 {
     overflow-y: hidden;
     padding-top: 100px;
     z-index: 1000;
-    border-radius: 0 20px 20px 0;
     transition: right 0.5s;
   }
 
@@ -505,14 +504,12 @@ footer h5 {
     position: absolute;
     top: 0;
     right: -250px;
-    background-color: #333;
     width: 80%;
     background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
     overflow-y: hidden;
     padding-top: 100px;
     z-index: 1000;
-    border-radius: 0 20px 20px 0;
     transition: right 0.5s;
   }
 
