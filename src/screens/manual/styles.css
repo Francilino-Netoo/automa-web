@@ -249,7 +249,7 @@ footer h5 {
     background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
     overflow-y: hidden;
-    padding-top: 15vh;
+    padding-top: 17vh;
     z-index: 1000;
     transition: right 0.5s;
   }
@@ -335,13 +335,8 @@ footer h5 {
   }
 
   .contato {
-    position: absolute;
-    margin-top: 50vh;
+    margin-top: 17vh;
     padding-bottom: 1px;
-  }
-  .social1 {
-    display: flex;
-    position: fixed;
   }
 
   .social1 img {
@@ -466,11 +461,8 @@ footer h5 {
   }
 
   .contato {
-    margin-top: 55vh;
+    margin-top: 17vh;
     padding-bottom: 1px;
-  }
-  .social1 {
-    display: flex;
   }
 
   .social1 img {
@@ -595,11 +587,8 @@ footer h5 {
   }
 
   .contato {
-    margin-top: 40vh;
+    margin-top: 17vh;
     padding-bottom: 1px;
-  }
-  .social1 {
-    display: flex;
   }
 
   .social1 img {
@@ -724,11 +713,8 @@ footer h5 {
   }
 
   .contato {
-    margin-top: 40vh;
+    margin-top: 17vh;
     padding-bottom: 1px;
-  }
-  .social1 {
-    display: flex;
   }
 
   .social1 img {
