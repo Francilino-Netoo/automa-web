@@ -24,6 +24,14 @@ body {
   left: 0;
   z-index: 1000;
 }
+.social1 {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .hidden {
   display: none;
@@ -213,16 +221,16 @@ footer h5 {
     font-size: 25px;
   }
 
-  .social {
-    gap: 40px;
+  .social1 {
+    gap: 10px;
   }
 
-  .social img {
+  .social1 img {
     height: 40px;
     border-radius: 50%;
   }
 
-  .social a {
+  .social1 a {
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -249,15 +257,15 @@ footer h5 {
     background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
     overflow-y: hidden;
-    padding-top: 17vh;
+    padding-top: 15vh;
     z-index: 1000;
     transition: right 0.5s;
   }
 
   .side-menu a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 8px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
     color: #fff;
     display: block;
     transition: color 0.3s;
@@ -271,12 +279,12 @@ footer h5 {
     position: absolute;
     top: 0;
     right: 25px;
-    font-size: 36px;
+    font-size: 25px;
     margin-left: 50px;
   }
 
   .openbtn {
-    font-size: 35px;
+    font-size: 25px;
     cursor: pointer;
     position: fixed;
     top: 10px;
@@ -334,20 +342,19 @@ footer h5 {
     display: none;
   }
 
-  .contato {
-    margin-top: 17vh;
-    padding-bottom: 1px;
-  }
-
   .social1 img {
-    height: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
   }
 
   .social1 a {
-    border-radius: 50%;
-    height: 40px;
-    width: 25px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 }
 
@@ -373,15 +380,15 @@ footer h5 {
     background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
     overflow-y: hidden;
-    padding-top: 100px;
+    padding-top: 15vh;
     z-index: 1000;
     transition: right 0.5s;
   }
 
   .side-menu a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 8px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
     color: #fff;
     display: block;
     transition: color 0.3s;
@@ -400,7 +407,7 @@ footer h5 {
   }
 
   .openbtn {
-    font-size: 35px;
+    font-size: 25px;
     cursor: pointer;
     position: fixed;
     top: 10px;
@@ -460,20 +467,19 @@ footer h5 {
     display: none;
   }
 
-  .contato {
-    margin-top: 17vh;
-    padding-bottom: 1px;
-  }
-
   .social1 img {
-    height: 40px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
   }
 
   .social1 a {
-    border-radius: 50%;
-    height: 40px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 }
 
@@ -499,15 +505,15 @@ footer h5 {
     background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
     overflow-y: hidden;
-    padding-top: 100px;
+    padding-top: 15vh;
     z-index: 1000;
     transition: right 0.5s;
   }
 
   .side-menu a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 8px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
     color: #fff;
     display: block;
     transition: color 0.3s;
@@ -526,7 +532,7 @@ footer h5 {
   }
 
   .openbtn {
-    font-size: 35px;
+    font-size: 25px;
     cursor: pointer;
     position: fixed;
     top: 10px;
@@ -586,20 +592,19 @@ footer h5 {
     display: none;
   }
 
-  .contato {
-    margin-top: 17vh;
-    padding-bottom: 1px;
-  }
-
   .social1 img {
-    height: 40px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
   }
 
   .social1 a {
-    border-radius: 50%;
-    height: 40px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 }
 
@@ -617,7 +622,7 @@ footer h5 {
   }
 
   .side-menu {
-    height: 80vh;
+    height: 100vh;
     position: absolute;
     top: 0;
     right: -250px;
@@ -625,13 +630,13 @@ footer h5 {
     background: linear-gradient(to right, #020c92, #c122f1);
     overflow-x: hidden;
     overflow-y: hidden;
-    padding-top: 100px;
+    padding-top: 15vh;
     z-index: 1000;
     transition: right 0.5s;
   }
 
   .side-menu a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 8px;
     text-decoration: none;
     font-size: 15px;
     color: #fff;
@@ -652,7 +657,7 @@ footer h5 {
   }
 
   .openbtn {
-    font-size: 35px;
+    font-size: 25px;
     cursor: pointer;
     position: fixed;
     top: 10px;
@@ -697,14 +702,14 @@ footer h5 {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(225, 1, 255, 0.8);
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
   }
 
   .manual-container img {
     margin-bottom: 10px;
     max-width: 100%;
-    max-height: 80%;
+    max-height: 90%;
   }
   /*****************************/
   /*****************************/
@@ -712,19 +717,18 @@ footer h5 {
     display: none;
   }
 
-  .contato {
-    margin-top: 17vh;
-    padding-bottom: 1px;
-  }
-
   .social1 img {
     height: 30px;
+    width: 30px;
     border-radius: 50%;
   }
 
   .social1 a {
-    border-radius: 50%;
-    height: 40px;
-    width: 15px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 }
