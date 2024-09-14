@@ -1,0 +1,490 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("../../image/cap.png") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cadastre {
+  text-align: center;
+}
+.cadastre h1 {
+  font-size: 100%;
+  color: #fff;
+}
+.cadastre h2 {
+  font-size: 100%;
+  color: #fff;
+}
+.cadastre .botoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cadastre .botoes button {
+  width: 48%;
+  padding: 10px 0;
+  font-size: 100%;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cadastre .botoes a.button-link{
+  width: 48%;
+  padding: 10px 0;
+  font-size: 100%;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 2s;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blinking {
+  animation: blink 1s infinite;
+}
+
+.cadastre .botoes a.button-link:hover,
+.cadastre .botoes button:hover {
+  background-color: #0056b3; /
+}
+
+.cadastre .botoes button {
+  padding: 10px 0;
+}
+
+.button-link:hover {
+  background-color: #0056b3;
+}
+
+.register-container {
+  margin: 1.5%;
+  background: linear-gradient(
+    to right,
+    rgba(190, 43, 43, 0.6),
+    rgba(13, 206, 219, 0.6)
+  );
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container img {
+  display: block;
+  margin: 0 auto 20px;
+  max-width: 100px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  background: linear-gradient(
+    to right,
+    rgba(190, 43, 43, 0.6),
+    rgba(13, 206, 219, 0.6)
+  );
+}
+
+.input-group i {
+  color: #0c42f5;
+  margin-right: 10px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.botoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.botoes button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+p a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+#payment-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#payment-section h2 {
+  margin-bottom: 15px;
+  color: #000;
+}
+
+#payment-section img {
+  max-width: 40%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+#payment-code {
+  font-size: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  text-align: center;
+  display: inline-block;
+  padding: 10px;
+  max-width: 85%;
+  overflow: hidden;
+}
+
+#qr-code {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+#payment-url {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #007bff;
+}
+
+#copy-button,
+#clear-qr-code {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+#clear-qr-code {
+  background-color: #dc3545;
+}
+
+@media (max-width: 330px) {
+  .register-container {
+    margin: 1.5%;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .register-container img {
+    margin: 0 auto 20px;
+    max-width: 100px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .input-group i {
+    margin-right: 10px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+  .botoes {
+    gap: 10px;
+  }
+
+  .botoes button {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+    width: 80px;
+    height: 30px;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  p a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  p a:hover {
+    text-decoration: underline;
+  }
+
+  #payment-section {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  #payment-section h2 {
+    margin-bottom: 15px;
+    color: #000;
+  }
+
+  #payment-section img {
+    max-width: 20%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  #payment-code {
+    font-size: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    text-align: center;
+    display: inline-block;
+  }
+
+  #payment-url {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #007bff;
+  }
+  #copy-button,
+  #clear-qr-code {
+    margin: 10px auto;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+
+  #clear-qr-code {
+    background-color: #dc3545;
+  }
+
+  #payment-code {
+    font-size: 5px;
+  }
+  #payment-title {
+    font-size: 12px;
+    color: #000;
+  }
+  .register-container p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .register-container {
+    margin: 1.5%;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .register-container img {
+    margin: 0 auto 20px;
+    max-width: 100px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .input-group i {
+    margin-right: 10px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+  .botoes {
+    gap: 10px;
+  }
+
+  .botoes button {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+    width: 80px;
+    height: 30px;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  p a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  p a:hover {
+    text-decoration: underline;
+  }
+
+  #payment-section {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  #payment-section h2 {
+    margin-bottom: 15px;
+    color: #000;
+  }
+
+  #payment-section img {
+    max-width: 50%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  #payment-url {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #007bff;
+  }
+  #copy-button,
+  #clear-qr-code {
+    margin: 10px auto;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+
+  #clear-qr-code {
+    background-color: #dc3545;
+  }
+
+  #payment-code {
+    font-size: 5px;
+  }
+  #payment-title {
+    font-size: 12px;
+    color: #000;
+  }
+  .register-container p {
+    font-size: 12px;
+  }
+}
