@@ -18,16 +18,7 @@
   --text-color: #fff;
   --nain-color: #0ef;
 }
-ul {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  background: var(--bg-color); /* Ajuste de fundo opcional */
-}
+
 html,
 body {
   overflow: hidden;
@@ -112,7 +103,7 @@ ul {
   list-style: none;
   padding: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   z-index: 10;
 }
@@ -132,13 +123,14 @@ ul {
 .btn:hover {
   box-shadow: none;
 }
-
-.imagens-container .btn {
-  margin: 2rem;
+.navbar ul li {
+  display: flex;
+}
+.btn {
+  margin: 1.5rem;
   width: 20rem;
   padding: 1rem;
-  font-size: 2.3rem;
-  z-index: 1000;
+  font-size: 1.6rem;
   position: relative;
 }
 
