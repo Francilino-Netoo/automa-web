@@ -37,8 +37,8 @@
           src="../../../images/telinhas/bac.png"
           alt="Projeto Bac Bo"
         />
-        <div class="video-container hide" id="video-container"></div>
       </div>
+      <div class="video-container hide" id="video-container"></div>
       <ul>
         <li>
           <button class="btn ligar">Ligar IA</button>
@@ -78,7 +78,7 @@
               const data = await response.json();
               if (data.videoUrl) {
                 console.log(data.videoUrl);
-                videoContainer.innerHTML = `<iframe src="${data.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+                videoContainer.innerHTML = `<iframe src="${data.videoUrl}" frameborder="0"></iframe>`;
                 videoContainer.classList.remove("hide");
                 projectImage.classList.add("hide");
                 updateButtonStates("IA Ligada", "Desligar IA");

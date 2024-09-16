@@ -27,6 +27,7 @@
         <a href="#services">Serviços</a>
         <a href="#portfolio">IAs</a>
         <a href="#contact">Contato</a>
+        <a href="#sair" id="logoutBtn">Sair</a>
       </nav>
     </header>
 
@@ -238,6 +239,12 @@
             }
         });
       });
+      document.getElementById('logoutBtn').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        localStorage.removeItem('authToken');
+        window.location.href = "../index.html"; 
+      });
+      
       function toggleText(event) {
         event.preventDefault(); 
         const serviceBox = event.target.closest('.services-box'); 
