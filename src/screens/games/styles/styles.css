@@ -45,7 +45,7 @@ section {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 9%;
+  padding: 1rem 9%;
   background: var(--bg-color);
   display: flex;
   justify-content: space-between;
@@ -110,13 +110,13 @@ ul {
   z-index: 10;
 }
 #desaparecer1 {
-  position: absolute;
-  bottom: 1rem;
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1rem 0;
+  height: 55px;
   z-index: 20;
 }
 .manual-container h3 {
@@ -132,34 +132,68 @@ ul {
   padding: 0.5rem;
   font-size: 20px;
 }
-.manual-container .api-messages {
+.manual-container .ajustar {
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  display: block;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: auto; /* Permite que a altura seja ajustada automaticamente */
+  display: grid;
+  grid-template-columns: 1fr; /* Uma coluna */
+  grid-template-rows: auto; /* Linhas automáticas */
+  gap: 1rem; /* Espaçamento entre os itens */
+  justify-content: center;
+  align-items: center;
   z-index: 20;
+  background: rgba(73, 79, 82, 0.5);
+  padding: calc(1vw + 1vh); /* Padding responsivo */
   color: var(--text-color);
-  background: #0ef;
-  padding: 0.5rem;
-  font-size: 20px;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10px;
 }
-#api-messages p {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  display: block;
-  z-index: 30;
-  color: var(--text-color);
-  padding: 0.5rem;
-  font-size: 20px;
-  box-shadow: 0 0 10px rgba(5, 166, 230, 0.5);
-  background-color: rgba(5, 166, 230, 0.5);
+
+/* Estilos para os elementos internos */
+.manual-container .ajustar #api-message1,
+.manual-container .ajustar #api-message2,
+.manual-container .ajustar #api-message3,
+.manual-container .ajustar #api-message4,
+.manual-container .ajustar #api-message5 {
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  margin-top: 0.1rem;
+  box-shadow: 0 0 10px rgba(5, 166, 230, 0.8);
+  background-color: rgba(5, 166, 230, 0.8);
   border-radius: 25px;
+  font-size: 1.3rem; /* Tamanho da fonte responsivo */
+  padding: 1rem; /* Padding responsivo */
 }
+
+/* Estilo do cursor para arrastar */
+.ajustar {
+  cursor: move;
+  overflow: hidden;
+  z-index: 20;
+  position: absolute;
+}
+
+/* Estilos da alça de redimensionamento */
+.resize-handle {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border: 2px solid #000;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+  border-radius: 0 0 0 5px;
+  z-index: 30; /* Certifique-se de que a alça está acima dos outros elementos */
+}
+
 .btn {
   display: inline-block;
   padding: 1rem 2.8rem;
@@ -181,8 +215,8 @@ ul {
 }
 .btn {
   margin: 1.5rem;
-  width: 20rem;
-  padding: 1rem;
+  width: 15rem;
+  padding: 0.5rem;
   font-size: 1.6rem;
   position: relative;
 }
@@ -193,7 +227,8 @@ ul {
 
 .video-container {
   position: fixed;
-  top: 60px;
+  margin-top: 10rem;
+  bottom: 0;
   left: 0;
   width: 100vw;
   height: calc(100vh - 60px);
