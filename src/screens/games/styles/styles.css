@@ -289,8 +289,14 @@ ul {
     display: none;
   }
   #desaparecer {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
+
   .manual-container .ajustar {
     width: 40%;
     height: auto;
