@@ -38,6 +38,13 @@ body {
   text-align: center;
 }
 
+.alinhar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
+}
+
 .login-container input {
   width: calc(100% - 20px);
   padding: 10px;
