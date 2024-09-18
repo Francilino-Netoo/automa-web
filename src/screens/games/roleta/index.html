@@ -80,7 +80,7 @@
         loadingIndicator.textContent = "Carregando vídeo...";
         loadingIndicator.classList.add("loading-indicator");
 
-        const socket = io("https://6657-200-4-101-224.ngrok-free.app");
+        const socket = io("http://192.168.108.77:5006");
 
         socket.on("api_message", (data) => {
           console.log("Dados recebidos do WebSocket (api_message):", data);
