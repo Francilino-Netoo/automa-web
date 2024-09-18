@@ -152,7 +152,7 @@
               videoContainer.removeChild(loadingIndicator);
 
               if (data.videoUrl) {
-                videoContainer.innerHTML = `<iframe id="video-frame" src="${data.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+                videoContainer.innerHTML = `<iframe id="video-frame" src="${data.videoUrl}" frameborder="0"></iframe>`;
                 videoContainer.classList.remove("hide");
                 projectImage.classList.add("hide");
 
