@@ -80,6 +80,7 @@
             const data = await response.json();
             if (data.message === "true") {
               window.location.href = "./src/index.html";
+              localStorage.removeItem("visita");
             } else {
               localStorage.removeItem("authToken");
               window.location.href = "../src/index.html";
@@ -143,7 +144,7 @@
       document.getElementById("visitor-btn").addEventListener("click", () => {
         const visitante = "visitante";
         localStorage.setItem("visita", visitante);
-
+        localStorage.removeItem("authToken");
         window.location.href = "./src/index.html";
       });
     </script>
