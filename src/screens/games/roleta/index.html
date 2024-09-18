@@ -40,11 +40,11 @@
     <div class="imagens-container" id="content-area">
       <div class="manual-container">
         <div class="ajustar load" id="draggable-resizable">
-          <div id="api-message1"></div>
-          <div id="api-message2"></div>
-          <div id="api-message3"></div>
-          <div id="api-message4"></div>
-          <div id="api-message5"></div>
+          <div id="api-message1">🔔 Espere um sinal da IA 🔔</div>
+          <div id="api-message2">🔔 Espere um sinal da IA 🔔</div>
+          <div id="api-message3">🔔 Espere um sinal da IA 🔔</div>
+          <div id="api-message4">🔔 Espere um sinal da IA 🔔</div>
+          <div id="api-message5">🔔 Espere um sinal da IA 🔔</div>
         </div>
 
         <img
@@ -80,7 +80,7 @@
         loadingIndicator.textContent = "Carregando vídeo...";
         loadingIndicator.classList.add("loading-indicator");
 
-        const socket = io("http://192.168.41.77:5006");
+        const socket = io("http://192.168.108.77:5006");
 
         socket.on("api_message", (data) => {
           console.log("Dados recebidos do WebSocket (api_message):", data);
