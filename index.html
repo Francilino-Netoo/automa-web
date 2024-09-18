@@ -139,6 +139,9 @@
           }
         });
       document.getElementById("visitor-btn").addEventListener("click", () => {
+        const visitante = "visitante";
+        localStorage.setItem("visita", visitante);
+
         window.location.href = "./src/index.html";
       });
     </script>

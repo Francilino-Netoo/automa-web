@@ -145,7 +145,8 @@
           <div class="portfolio-layer">
             <h4>IA Bac Bo</h4>
             <p>Essa IA realiza análises em tempo real, utilizando um banco de dados com mais de 1 milhão de resultados catalogados. Ela emprega aprendizado por reforço, acumulando meses de treinamento, e gera entradas com uma alta probabilidade de acerto!</p>
-            <a href="./screens/games/bacbo/index.html" ><i class="bx bx-link-external"></i></a>
+            <a href="#" id="ias" ><i class="bx bx-link-external"></i></a>
+            
           </div>
         </div>
         <div class="portfolio-box">
@@ -154,6 +155,7 @@
             <h4>IA Football Studio</h4>
             <p>Essa IA realiza análises em tempo real, utilizando um banco de dados com mais de 1 milhão de resultados catalogados. Ela emprega aprendizado por reforço, acumulando meses de treinamento, e gera entradas com uma alta probabilidade de acerto!</p>
             <a href="./screens/games/football/index.html" ><i class="bx bx-link-external"></i></a>
+           
           </div>
         </div>
         <div class="portfolio-box">
@@ -162,6 +164,7 @@
             <h4>IA Roleta</h4>
             <p>Essa IA realiza análises em tempo real, utilizando um banco de dados com mais de 1 milhão de resultados catalogados. Ela emprega aprendizado por reforço, acumulando meses de treinamento, e gera entradas com uma alta probabilidade de acerto!</p>
             <a href="./screens/games/roleta/index.html" ><i class="bx bx-link-external"></i></a>
+            
           </div>
         </div>
         <div class="portfolio-box">
@@ -170,6 +173,7 @@
             <h4>IA Stock Market</h4>
             <p>Essa IA realiza análises em tempo real, utilizando um banco de dados com mais de 1 milhão de resultados catalogados. Ela emprega aprendizado por reforço, acumulando meses de treinamento, e gera entradas com uma alta probabilidade de acerto!</p>
             <a href="./screens/games/stok/index.html" ><i class="bx bx-link-external"></i></a>
+            
           </div>
         </div>
       </div>
@@ -262,7 +266,47 @@
           serviceBox.classList.add('expanded'); 
           event.target.textContent = 'Ler Menos'; 
         }
-      } 
+      }
+      document.getElementById("ias").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+        console.log('token aqui porra ',token)
+        
+        if (token) {
+          alert('Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro.');
+        } else {
+          window.location.href = "./screens/games/bacbo/index.html";
+        }
+      });
+      
+      document.getElementById("ias1").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+        if (token) {
+          alert('Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro.');
+        } else {
+          window.location.href = "./screens/games/football/index.html";
+        }
+      });
+      
+      document.getElementById("ias2").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+        if (token) {
+          alert('Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro.');
+        } else {
+          window.location.href = "./screens/games/roleta/index.html";
+        }
+      });
+      
+      document.getElementById("ias3").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+
+        if (token) {
+          alert('Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro.');
+        } else {
+          window.location.href = "./screens/games/stok/index.html";
+        }
+      });
+      
+
     </script>
   </body>
 </html>
