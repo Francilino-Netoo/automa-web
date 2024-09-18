@@ -33,6 +33,7 @@
           <input type="password" name="password" placeholder="Senha" required />
         </div>
         <button type="submit">LOGIN</button>
+        <button type="button" id="visitor-btn">VISITANTE</button>
       </form>
       <p>
         Não tem uma conta?
@@ -137,6 +138,9 @@
             console.error("Login error:", error);
           }
         });
+      document.getElementById("visitor-btn").addEventListener("click", () => {
+        window.location.href = "./src/index.html";
+      });
     </script>
   </body>
 </html>
