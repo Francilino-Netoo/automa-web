@@ -206,6 +206,7 @@
         attachButtonEvents();
 
         // Seleciona os elementos
+        // Seleciona os elementos
         const draggableResizable = document.getElementById(
           "draggable-resizable"
         );
@@ -220,16 +221,22 @@
         const startDrag = (e) => {
           if (e.target === resizeHandle) return; // Evita iniciar o arrasto ao clicar na alça de redimensionamento
           isDragging = true;
-          dragOffsetX = e.clientX - draggableResizable.offsetLeft;
-          dragOffsetY = e.clientY - draggableResizable.offsetTop;
+          dragOffsetX = e.clientX
+            ? e.clientX - draggableResizable.offsetLeft
+            : e.touches[0].clientX - draggableResizable.offsetLeft;
+          dragOffsetY = e.clientY
+            ? e.clientY - draggableResizable.offsetTop
+            : e.touches[0].clientY - draggableResizable.offsetTop;
           document.body.style.userSelect = "none"; // Previne seleção de texto durante o arrasto
         };
 
         // Função para mover a caixa
         const onDrag = (e) => {
           if (isDragging) {
-            draggableResizable.style.left = `${e.clientX - dragOffsetX}px`;
-            draggableResizable.style.top = `${e.clientY - dragOffsetY}px`;
+            const clientX = e.clientX || e.touches[0].clientX;
+            const clientY = e.clientY || e.touches[0].clientY;
+            draggableResizable.style.left = `${clientX - dragOffsetX}px`;
+            draggableResizable.style.top = `${clientY - dragOffsetY}px`;
           }
         };
 
@@ -241,8 +248,13 @@
 
         // Adiciona os event listeners para arrastar
         draggableResizable.addEventListener("mousedown", startDrag);
+        draggableResizable.addEventListener("touchstart", startDrag, {
+          passive: true,
+        });
         document.addEventListener("mousemove", onDrag);
+        document.addEventListener("touchmove", onDrag, { passive: true });
         document.addEventListener("mouseup", stopDrag);
+        document.addEventListener("touchend", stopDrag, { passive: true });
       });
     </script>
   </body>
