@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bac Bo</title>
+    <title>Roleta</title>
     <link rel="stylesheet" href="../styles/styles.css" />
     <link
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
@@ -83,7 +83,6 @@
         const socket = io("http://192.168.0.106:5006");
 
         socket.on("api_message", (data) => {
-          console.log("Dados recebidos do WebSocket (api_message):", data);
           if (data && typeof data === "object" && data.possivel_sinal) {
             const message = data.possivel_sinal;
             apiMessage1Div.innerHTML = `<p>${message}</p>`;
@@ -93,7 +92,6 @@
         });
 
         socket.on("api_message1", (data) => {
-          console.log("Dados recebidos do WebSocket (api_message1):", data);
           if (data && typeof data === "object" && data.possivel_sinal) {
             const message = data.possivel_sinal;
             apiMessage2Div.innerHTML = `<p>${message}</p>`;
@@ -103,7 +101,6 @@
         });
 
         socket.on("api_message2", (data) => {
-          console.log("Dados recebidos do WebSocket (api_message2):", data);
           if (data && typeof data === "object" && data.possivel_sinal) {
             const message = data.possivel_sinal;
             apiMessage3Div.innerHTML = `<p>${message}</p>`;
@@ -113,7 +110,6 @@
         });
 
         socket.on("api_message3", (data) => {
-          console.log("Dados recebidos do WebSocket (api_message3):", data);
           if (data && typeof data === "object" && data.possivel_sinal) {
             const message = data.possivel_sinal;
             apiMessage4Div.innerHTML = `<p>${message}</p>`;
@@ -123,7 +119,6 @@
         });
 
         socket.on("api_message4", (data) => {
-          console.log("Dados recebidos do WebSocket (api_message4):", data);
           if (data && typeof data === "object" && data.possivel_sinal) {
             const message = data.possivel_sinal;
             apiMessage5Div.innerHTML = `<p>${message}</p>`;
@@ -133,7 +128,6 @@
         });
 
         if (token === "Token não encontrado") {
-          console.log("Nenhum token encontrado no localStorage.");
           window.location.href = "../../../../index.html";
           return;
         }
@@ -173,7 +167,6 @@
                 alert("Erro ao obter o link de vídeo.");
               }
             } catch (error) {
-              console.error("Erro ao fazer a solicitação:", error);
               videoContainer.removeChild(loadingIndicator);
               alert("Erro na conexão. Por favor, tente novamente.");
             }
