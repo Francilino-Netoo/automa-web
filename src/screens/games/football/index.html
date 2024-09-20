@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bac Bo</title>
+    <title>Football Studio</title>
     <link rel="stylesheet" href="../styles/styles.css" />
     <link
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
       rel="stylesheet"
     />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -18,14 +17,18 @@
   <body>
     <header class="header">
       <a href="#" class="logo">Automa<span>Web</span></a>
-
       <i class="bx bx-menu" id="menu-icon"></i>
-
       <nav class="navbar">
         <a href="../../../#home" class="active">Início</a>
         <a href="../../../#portfolio">IAs</a>
         <a href="../../../#contact">Contato</a>
-        <ul>
+        <ul id="desaparecer">
+          <li>
+            <button class="btn ligar">Ligar IA</button>
+            <button class="btn desligar">Desligar IA</button>
+          </li>
+        </ul>
+        <ul id="desaparecer1">
           <li>
             <button class="btn ligar">Ligar IA</button>
             <button class="btn desligar">Desligar IA</button>
@@ -36,6 +39,10 @@
 
     <div class="imagens-container" id="content-area">
       <div class="manual-container">
+        <div class="ajustar load" id="draggable-resizable">
+          <div id="api-message1">🔔 Espere um sinal da IA 🔔</div>
+        </div>
+
         <img
           id="project-image"
           src="../../../images/telinhas/fut.png"
@@ -46,10 +53,9 @@
     </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
     <script src="../js/script.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -57,9 +63,28 @@
           localStorage.getItem("authToken") || "Token não encontrado";
         const videoContainer = document.getElementById("video-container");
         const projectImage = document.getElementById("project-image");
+        const apiMessage1Div = document.getElementById("api-message1");
 
-        if (!token) {
-          console.log("Nenhum token encontrado no localStorage.");
+        const draggableResizable = document.getElementById(
+          "draggable-resizable"
+        );
+
+        const loadingIndicator = document.createElement("div");
+        loadingIndicator.textContent = "Carregando vídeo...";
+        loadingIndicator.classList.add("loading-indicator");
+
+        const socket = io("http://192.168.0.106:5009");
+
+        socket.on("api_message", (data) => {
+          if (data && typeof data === "object" && data.possivel_sinal) {
+            const message = data.possivel_sinal;
+            apiMessage1Div.innerHTML = `<p>${message}</p>`;
+          } else {
+            apiMessage1Div.innerHTML = `<p>Dados inválidos recebidos (api_message)</p>`;
+          }
+        });
+
+        if (token === "Token não encontrado") {
           window.location.href = "../../../../index.html";
           return;
         }
@@ -67,6 +92,7 @@
         const loadVideo = async () => {
           if (token) {
             try {
+              videoContainer.appendChild(loadingIndicator);
               const response = await fetch(
                 `https://automa-cassinos.dev.br/futtboll?token=${encodeURIComponent(
                   token
@@ -74,17 +100,32 @@
                 { method: "GET" }
               );
               const data = await response.json();
+              videoContainer.removeChild(loadingIndicator);
+
               if (data.videoUrl) {
-                console.log(data.videoUrl);
-                videoContainer.innerHTML = `<iframe src="${data.videoUrl}" frameborder="0"></iframe>`;
+                videoContainer.innerHTML = `<iframe id="video-frame" src="${data.videoUrl}" frameborder="0"></iframe>`;
                 videoContainer.classList.remove("hide");
                 projectImage.classList.add("hide");
+
                 updateButtonStates("IA Ligada", "Desligar IA");
+
+                const videoFrame = document.getElementById("video-frame");
+                videoFrame.addEventListener("load", () => {
+                  draggableResizable.style.display = "block";
+                  draggableResizable.style.display = "grid";
+                });
+
+                videoFrame.addEventListener("error", () => {
+                  alert(
+                    "Erro ao carregar o vídeo. Por favor, tente novamente mais tarde."
+                  );
+                });
               } else {
                 alert("Erro ao obter o link de vídeo.");
               }
             } catch (error) {
-              console.error("Erro ao fazer a solicitação:", error);
+              videoContainer.removeChild(loadingIndicator);
+              alert("Erro na conexão. Por favor, tente novamente.");
             }
           } else {
             alert("Token não encontrado. Por favor, faça o login novamente.");
@@ -95,32 +136,70 @@
           videoContainer.innerHTML = "";
           videoContainer.classList.add("hide");
           projectImage.classList.remove("hide");
+          draggableResizable.style.display = "none"; // Ocultar a div
           updateButtonStates("Ligar IA", "IA Desligada");
         };
 
         const updateButtonStates = (ligarText, desligarText) => {
-          const ligarButton = document.querySelector(".btn.ligar");
-          const desligarButton = document.querySelector(".btn.desligar");
-          ligarButton.textContent = ligarText;
-          desligarButton.textContent = desligarText;
+          document.querySelectorAll(".btn.ligar").forEach((button) => {
+            button.textContent = ligarText;
+          });
+          document.querySelectorAll(".btn.desligar").forEach((button) => {
+            button.textContent = desligarText;
+          });
         };
 
         const attachButtonEvents = () => {
-          const ligarButtons = document.querySelectorAll(".btn.ligar");
-          const desligarButtons = document.querySelectorAll(".btn.desligar");
-
-          ligarButtons.forEach((button) => {
+          document.querySelectorAll(".btn.ligar").forEach((button) => {
             button.addEventListener("click", loadVideo);
           });
 
-          desligarButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-              closeVideo();
-            });
+          document.querySelectorAll(".btn.desligar").forEach((button) => {
+            button.addEventListener("click", closeVideo);
           });
         };
 
         attachButtonEvents();
+
+        const resizeHandle = draggableResizable.querySelector(".resize-handle");
+
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        const startDrag = (e) => {
+          if (e.target === resizeHandle) return;
+          isDragging = true;
+          dragOffsetX = e.clientX
+            ? e.clientX - draggableResizable.offsetLeft
+            : e.touches[0].clientX - draggableResizable.offsetLeft;
+          dragOffsetY = e.clientY
+            ? e.clientY - draggableResizable.offsetTop
+            : e.touches[0].clientY - draggableResizable.offsetTop;
+          document.body.style.userSelect = "none";
+        };
+
+        const onDrag = (e) => {
+          if (isDragging) {
+            const clientX = e.clientX || e.touches[0].clientX;
+            const clientY = e.clientY || e.touches[0].clientY;
+            draggableResizable.style.left = `${clientX - dragOffsetX}px`;
+            draggableResizable.style.top = `${clientY - dragOffsetY}px`;
+          }
+        };
+
+        const stopDrag = () => {
+          isDragging = false;
+          document.body.style.userSelect = "auto";
+        };
+        draggableResizable.addEventListener("mousedown", startDrag);
+        draggableResizable.addEventListener("touchstart", startDrag, {
+          passive: true,
+        });
+        document.addEventListener("mousemove", onDrag);
+        document.addEventListener("touchmove", onDrag, { passive: true });
+        document.addEventListener("mouseup", stopDrag);
+        document.addEventListener("touchend", stopDrag, { passive: true });
       });
     </script>
   </body>

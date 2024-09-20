@@ -37,7 +37,7 @@ section {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 9%;
+  padding: 0.5rem 6%;
   background: var(--bg-color);
   display: flex;
   justify-content: space-between;
@@ -54,7 +54,7 @@ section {
   cursor: default;
 }
 .navbar a {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   color: var(--text-color);
   margin-left: 2rem;
   transition: 0.3s;
@@ -400,17 +400,17 @@ span {
 }
 @media (max-width: 1700px) {
   html {
-    font-size: 45%;
+    font-size: 55%;
   }
 }
 @media (max-width: 1500px) {
   html {
-    font-size: 40%;
+    font-size: 50%;
   }
 }
 @media (max-width: 1300px) {
   html {
-    font-size: 35%;
+    font-size: 45%;
   }
 }
 
@@ -420,7 +420,7 @@ span {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 100px) {
   .header {
     padding: 2rem 3%;
   }
