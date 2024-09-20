@@ -73,14 +73,14 @@
         loadingIndicator.textContent = "Carregando vídeo...";
         loadingIndicator.classList.add("loading-indicator");
 
-        const socket = io("https://automa-cassinos.dev.br/service4");
+        const socket = io("wss://automa-cassinos.dev.br");
 
-        socket.on("api_message", (data) => {
+        socket.on("stok", (data) => {
           if (data && typeof data === "object" && data.possivel_sinal) {
             const message = data.possivel_sinal;
             apiMessage1Div.innerHTML = `<p>${message}</p>`;
           } else {
-            apiMessage1Div.innerHTML = `<p>Dados inválidos recebidos (api_message)</p>`;
+            apiMessage1Div.innerHTML = `<p>Dados inválidos recebidos (stok)</p>`;
           }
         });
 
