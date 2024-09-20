@@ -73,7 +73,7 @@
         loadingIndicator.textContent = "Carregando vídeo...";
         loadingIndicator.classList.add("loading-indicator");
 
-        const socket = io("http://192.168.0.106:5010");
+        const socket = io("https://automa-cassinos.dev.br/service4");
 
         socket.on("api_message", (data) => {
           if (data && typeof data === "object" && data.possivel_sinal) {
