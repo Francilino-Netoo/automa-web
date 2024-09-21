@@ -80,52 +80,59 @@
         loadingIndicator.textContent = "Carregando vídeo...";
         loadingIndicator.classList.add("loading-indicator");
 
-        const socket = io("https://automa-cassinos.dev.br/service1");
+        const socketConnection = () => {
+          const socket = io("wss://automa-cassinos.dev.br");
 
-        socket.on("api_message", (data) => {
-          if (data && typeof data === "object" && data.possivel_sinal) {
-            const message = data.possivel_sinal;
-            apiMessage1Div.innerHTML = `<p>${message}</p>`;
-          } else {
-            apiMessage1Div.innerHTML = `<p>Dados inválidos recebidos (api_message)</p>`;
-          }
-        });
+          socket.on("api_message", (data) => {
+            if (data && typeof data === "object" && data.possivel_sinal) {
+              const message = data.possivel_sinal;
+              apiMessage1Div.innerHTML = `<p>${message}</p>`;
+            } else {
+              apiMessage1Div.innerHTML = `<p>Dados inválidos recebidos (api_message)</p>`;
+            }
+          });
 
-        socket.on("api_message1", (data) => {
-          if (data && typeof data === "object" && data.possivel_sinal) {
-            const message = data.possivel_sinal;
-            apiMessage2Div.innerHTML = `<p>${message}</p>`;
-          } else {
-            apiMessage2Div.innerHTML = `<p>Dados inválidos recebidos (api_message1)</p>`;
-          }
-        });
+          socket.on("api_message1", (data) => {
+            if (data && typeof data === "object" && data.possivel_sinal) {
+              const message = data.possivel_sinal;
+              apiMessage2Div.innerHTML = `<p>${message}</p>`;
+            } else {
+              apiMessage2Div.innerHTML = `<p>Dados inválidos recebidos (api_message1)</p>`;
+            }
+          });
 
-        socket.on("api_message2", (data) => {
-          if (data && typeof data === "object" && data.possivel_sinal) {
-            const message = data.possivel_sinal;
-            apiMessage3Div.innerHTML = `<p>${message}</p>`;
-          } else {
-            apiMessage3Div.innerHTML = `<p>Dados inválidos recebidos (api_message2)</p>`;
-          }
-        });
+          socket.on("api_message2", (data) => {
+            if (data && typeof data === "object" && data.possivel_sinal) {
+              const message = data.possivel_sinal;
+              apiMessage3Div.innerHTML = `<p>${message}</p>`;
+            } else {
+              apiMessage3Div.innerHTML = `<p>Dados inválidos recebidos (api_message2)</p>`;
+            }
+          });
 
-        socket.on("api_message3", (data) => {
-          if (data && typeof data === "object" && data.possivel_sinal) {
-            const message = data.possivel_sinal;
-            apiMessage4Div.innerHTML = `<p>${message}</p>`;
-          } else {
-            apiMessage4Div.innerHTML = `<p>Dados inválidos recebidos (api_message3)</p>`;
-          }
-        });
+          socket.on("api_message3", (data) => {
+            if (data && typeof data === "object" && data.possivel_sinal) {
+              const message = data.possivel_sinal;
+              apiMessage4Div.innerHTML = `<p>${message}</p>`;
+            } else {
+              apiMessage4Div.innerHTML = `<p>Dados inválidos recebidos (api_message3)</p>`;
+            }
+          });
 
-        socket.on("api_message4", (data) => {
-          if (data && typeof data === "object" && data.possivel_sinal) {
-            const message = data.possivel_sinal;
-            apiMessage5Div.innerHTML = `<p>${message}</p>`;
-          } else {
-            apiMessage5Div.innerHTML = `<p>Dados inválidos recebidos (api_message4)</p>`;
-          }
-        });
+          socket.on("api_message4", (data) => {
+            if (data && typeof data === "object" && data.possivel_sinal) {
+              const message = data.possivel_sinal;
+              apiMessage5Div.innerHTML = `<p>${message}</p>`;
+            } else {
+              apiMessage5Div.innerHTML = `<p>Dados inválidos recebidos (api_message4)</p>`;
+            }
+          });
+
+          socket.on("connect_error", (error) => {
+            console.error("Erro na conexão:", error);
+            alert("Erro ao conectar ao WebSocket. Por favor, tente novamente.");
+          });
+        };
 
         if (token === "Token não encontrado") {
           window.location.href = "../../../../index.html";
@@ -194,7 +201,10 @@
 
         const attachButtonEvents = () => {
           document.querySelectorAll(".btn.ligar").forEach((button) => {
-            button.addEventListener("click", loadVideo);
+            button.addEventListener("click", () => {
+              loadVideo();
+              socketConnection(); // Conecta ao WebSocket ao ligar a IA
+            });
           });
 
           document.querySelectorAll(".btn.desligar").forEach((button) => {
