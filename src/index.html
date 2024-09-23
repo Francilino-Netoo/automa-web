@@ -28,6 +28,7 @@
         <a href="#portfolio">IAs</a>
         <a href="dese" class="link-external5">Automáticos Web</a>
         <a href="../src/screens/apks/index.html" target="_blank">Automáticos Android</a>
+        <a href="dese" class="link-external7">APIs e Bots</a>
         <a href="./screens/outros/index.html">Outros Projetos</a>
         <a href="#contact">Contato</a>
         <a href="#sair" id="logoutBtn">Sair</a>
@@ -227,23 +228,32 @@
         window.open(whatsappLink, '_blank');
       });
       document.addEventListener('DOMContentLoaded', () => {
-          document.querySelectorAll('.link-external5').forEach(link => {
-              
-              if (link.getAttribute('href') === 'dese' || !link.getAttribute('href')) {
-                  link.addEventListener('click', (event) => {
-                      event.preventDefault(); 
-                      alert('Atenção! Os automáticos web estão em desenvolvimento, caso queira usar Apps Androids é so clicar em Apps :)');
-                  });
-              }
-          });
-          document.querySelectorAll('.link-external6').forEach(link => {
+        document.querySelectorAll('.link-external5').forEach(link => {
             
             if (link.getAttribute('href') === 'dese' || !link.getAttribute('href')) {
                 link.addEventListener('click', (event) => {
                     event.preventDefault(); 
-                    alert('Só é uma demonstração, ele esta dispobivél no site de Apps Android :)');
+                    alert('Atenção! Os automáticos web estão em desenvolvimento, caso queira usar Apps Androids é so clicar em Automáticos Android :)');
                 });
             }
+        });
+        document.querySelectorAll('.link-external6').forEach(link => {
+          
+          if (link.getAttribute('href') === 'dese' || !link.getAttribute('href')) {
+              link.addEventListener('click', (event) => {
+                  event.preventDefault(); 
+                  alert('Só é uma demonstração, ele esta dispobivél no site de Automáticos Android :)');
+              });
+          }
+        });
+        document.querySelectorAll('.link-external7').forEach(link => {
+          
+          if (link.getAttribute('href') === 'dese' || !link.getAttribute('href')) {
+              link.addEventListener('click', (event) => {
+                  event.preventDefault(); 
+                  alert('Esta em desenvolvimento :)');
+              });
+          }
         });
       });
       document.getElementById('logoutBtn').addEventListener('click', function(event) {
