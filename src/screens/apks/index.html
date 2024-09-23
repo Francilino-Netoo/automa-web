@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fraqncilino Neto</title>
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Automa<span>Web</span></a>
+
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="../../#home" class="active">Início</a>
+        <a href="../../#about">Sobre</a>
+        <a href="../../#services">Serviços</a>
+        <a href="../../#portfolio">IAs</a>
+        <a href="../../dese" class="link-external5">Automáticos Web</a>
+        <a href="https://apiafobada.com.br/" target="_blank"
+          >Automáticos Android</a
+        >
+        <a href="#contact">Contato</a>
+        <a href="../../#sair" id="logoutBtn">Sair</a>
+      </nav>
+    </header>
+
+    <section class="portfolio" id="portfolio">
+      <h2 class="heading">APKs <span>Automáticos</span></h2>
+
+      <div class="porfolio-container">
+        <div class="portfolio-box">
+          <img src="images/portfolio1.png" alt="" />
+          <div class="portfolio-layer">
+            <a
+              href="https://github.com/Francilino-Netoo/Back-And-API-Basica"
+              target="_blank"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="images/portfolio2.png" alt="" />
+          <div class="portfolio-layer">
+            <a
+              href="https://github.com/Francilino-Netoo/chat-simples-websoket"
+              target="_blank"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="images/portfolio3.png" alt="" />
+          <div class="portfolio-layer">
+            <a
+              href="https://github.com/Francilino-Netoo/APIs-Pragmatic-Evolution-Ezugi-Atualizadas"
+              target="_blank"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="images/portfolio4.png" alt="" />
+          <div class="portfolio-layer">
+            <a
+              href="https://francilino-netoo.github.io/Site-Fisio/"
+              target="_blank"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="images/portfolio6.png" alt="" />
+          <div class="portfolio-layer">
+            <a href="https://apiafobada.com.br/" target="_blank"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="images/portfolio7.png" alt="" />
+          <div class="portfolio-layer">
+            <a href="dese" class="link-external6"
+              ><i class="bx bx-link-external"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Aqui-->
+    <section class="contact" id="contact">
+      <h2 class="heading">Contate <span>Me!</span></h2>
+      <form action="#">
+        <div class="input-box">
+          <input
+            type="text"
+            id="name"
+            placeholder="Escreva seu nome"
+            required
+          />
+        </div>
+
+        <textarea
+          id="message"
+          cols="30"
+          rows="10"
+          placeholder="Sua mensagem"
+          required
+        ></textarea>
+
+        <button type="button" class="btn" id="sendMessageBtn">
+          Enviar Mensagem
+        </button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-text">
+        <p>
+          Copyright &copy; 2024 por Francilino Neto | Todos os direitos
+          reservados.
+        </p>
+      </div>
+      <div class="footer-iconTop">
+        <a href="#portfolio"><i class="bx bx-up-arrow-alt"></i></a>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script src="js/script.js"></script>
+    <script>
+      document
+        .getElementById("sendMessageBtn")
+        .addEventListener("click", function () {
+          const name = document.getElementById("name").value;
+
+          const message = document.getElementById("message").value;
+
+          if (!name || !message) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+          }
+
+          const whatsappMessage = `Olá, meu nome é ${name}.\n Mensagem: ${message}`;
+
+          const whatsappLink = `https://api.whatsapp.com/send?phone=SEU_NUMERO_DE_WHATSAPP&text=${encodeURIComponent(
+            whatsappMessage
+          )}`;
+
+          window.open(whatsappLink, "_blank");
+        });
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".link-external5").forEach((link) => {
+          if (
+            link.getAttribute("href") === "dese" ||
+            !link.getAttribute("href")
+          ) {
+            link.addEventListener("click", (event) => {
+              event.preventDefault();
+              alert("Este projeto está em desenvolvimento :)");
+            });
+          }
+        });
+        document.querySelectorAll(".link-external6").forEach((link) => {
+          if (
+            link.getAttribute("href") === "dese" ||
+            !link.getAttribute("href")
+          ) {
+            link.addEventListener("click", (event) => {
+              event.preventDefault();
+              alert(
+                "Só é uma demonstração, ele esta dispobivél no site de Apps Android :)"
+              );
+            });
+          }
+        });
+      });
+      function toggleText(event) {
+        event.preventDefault();
+        const serviceBox = event.target.closest(".services-box");
+        const textContent = serviceBox.querySelector(".text-content");
+
+        if (textContent.classList.contains("expanded")) {
+          textContent.classList.remove("expanded");
+          serviceBox.classList.remove("expanded");
+          event.target.textContent = "Ler Mais";
+        } else {
+          textContent.classList.add("expanded");
+          serviceBox.classList.add("expanded");
+          event.target.textContent = "Ler Menos";
+        }
+      }
+    </script>
+  </body>
+</html>
