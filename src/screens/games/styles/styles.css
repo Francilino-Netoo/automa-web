@@ -599,3 +599,49 @@ ul {
     margin-top: 2rem;
   }
 }
+
+@media (max-width: 320px) {
+  html {
+    font-size: 40%;
+  }
+  .home-contente h1 {
+    font-size: 2.8rem;
+  }
+  .home-contente h3 {
+    font-size: 1.3rem;
+  }
+  .manual-container .ajustar #api-message1,
+  .manual-container .ajustar #api-message2,
+  .manual-container .ajustar #api-message3,
+  .manual-container .ajustar #api-message4,
+  .manual-container .ajustar #api-message5 {
+    border-radius: 25px;
+    font-size: 1rem;
+  }
+
+  .home-img img {
+    width: 50vw;
+  }
+  .about-img img {
+    width: 50vw;
+  }
+
+  .portfolio-layer h4 {
+    font-size: 1.3rem;
+  }
+  .portfolio-layer p {
+    font-size: 0.7rem;
+  }
+  .portfolio-layer a {
+    width: 3vh;
+    height: 3vh;
+  }
+
+  .footer {
+    flex-direction: column-reverse;
+  }
+  .footer p {
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
