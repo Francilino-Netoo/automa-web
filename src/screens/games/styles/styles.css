@@ -160,11 +160,11 @@ ul {
   display: none;
 }
 
-.manual-container .ajustar #api-message1,
+.manual-container .ajustar #api-message,
 .manual-container .ajustar #api-message2,
 .manual-container .ajustar #api-message3,
 .manual-container .ajustar #api-message4,
-.manual-container .ajustar #api-message5 {
+.manual-container .ajustar #api-message1 {
   width: 100%;
   max-width: 100%;
   text-align: center;
