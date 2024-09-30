@@ -25,7 +25,7 @@
         <a href="#home" class="active">Início</a>
         <a href="#about">Sobre</a>
         <a href="#services">Serviços</a>
-        <a href="#portfolio">IAs</a>
+        <a href="../src/screens/ias/index.html">IAs</a>
         <a href="dese" class="link-external5">Automáticos Web</a>
         <a href="../src/screens/apks/index.html" target="_blank">Automáticos Android</a>
         <a href="dese" class="link-external7">APIs e Bots</a>
@@ -123,49 +123,6 @@
             Especializado em web scraping para coleta e análise de dados usando bibliotecas como BeautifulSoup e Requests. Utilizo também ferramentas como Playwright para scraping dinâmico e automatizado, proporcionando soluções eficientes para extração e processamento de informações da web.
           </p>
           <a href="#" class="btn" onclick="toggleText(event)">Ler Mais</a>
-        </div>
-      </div>
-    </section>
-    
-    <section class="portfolio" id="portfolio">
-      <h2 class="heading">Automa <span>IAs</span></h2>
-
-      <div class="porfolio-container">
-        <div class="portfolio-box">
-          <img src="images/telinhas/bac.png" alt="" />
-          <div class="portfolio-layer">
-            <h4>IA Bac Bo</h4>
-            <p>Essa IA realiza análises em tempo real, utilizando um banco de dados com mais de 1 milhão de resultados catalogados. Ela emprega aprendizado por reforço, acumulando meses de treinamento, e gera entradas com uma alta probabilidade de acerto!</p>
-            <a href="#" id="ias" ><i class="bx bx-link-external"></i></a>
-            
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="images/telinhas/fut.png" alt="" />
-          <div class="portfolio-layer">
-            <h4>IA Football Studio</h4>
-            <p>Essa IA realiza análises em tempo real, utilizando um banco de dados com mais de 1 milhão de resultados catalogados. Ela emprega aprendizado por reforço, acumulando meses de treinamento, e gera entradas com uma alta probabilidade de acerto!</p>
-            <a href="#" id="ias1" ><i class="bx bx-link-external"></i></a>
-           
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="images/telinhas/ro.png" alt="" />
-          <div class="portfolio-layer">
-            <h4>IA Roleta</h4>
-            <p>Essa IA realiza análises em tempo real, utilizando um banco de dados com mais de 1 milhão de resultados catalogados. Ela emprega aprendizado por reforço, acumulando meses de treinamento, e gera entradas com uma alta probabilidade de acerto!</p>
-            <a href="#" id="ias2" ><i class="bx bx-link-external"></i></a>
-            
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="images/telinhas/sto.png" alt="" />
-          <div class="portfolio-layer">
-            <h4>IA Stock Market</h4>
-            <p>Essa IA realiza análises em tempo real, utilizando um banco de dados com mais de 1 milhão de resultados catalogados. Ela emprega aprendizado por reforço, acumulando meses de treinamento, e gera entradas com uma alta probabilidade de acerto!</p>
-            <a href="#" id="ias3" ><i class="bx bx-link-external"></i></a>
-            
-          </div>
         </div>
       </div>
     </section>
@@ -268,45 +225,6 @@
           event.target.textContent = 'Ler Menos'; 
         }
       }
-      document.getElementById("ias").addEventListener("click", async () => {
-        const token = localStorage.getItem("visita");
-        console.log('token aqui porra ',token)
-        
-        if (token) {
-          alert('Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro.');
-        } else {
-          window.location.href = "./screens/games/bacbo/index.html";
-        }
-      });
-      
-      document.getElementById("ias1").addEventListener("click", async () => {
-        const token = localStorage.getItem("visita");
-        if (token) {
-          alert('Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro.');
-        } else {
-          window.location.href = "./screens/games/football/index.html";
-        }
-      });
-      
-      document.getElementById("ias2").addEventListener("click", async () => {
-        const token = localStorage.getItem("visita");
-        if (token) {
-          alert('Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro.');
-        } else {
-          window.location.href = "./screens/games/roleta/index.html";
-        }
-      });
-      
-      document.getElementById("ias3").addEventListener("click", async () => {
-        const token = localStorage.getItem("visita");
-
-        if (token) {
-          alert('Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro.');
-        } else {
-          window.location.href = "./screens/games/stok/index.html";
-        }
-      });
-      
 
     </script>
   </body>
