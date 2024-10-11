@@ -27,7 +27,7 @@
         <a href="#services">Serviços</a>
         <a href="../src/screens/ias/index.html">IAs</a>
         <a href="dese" class="link-external5">Automáticos Web</a>
-        <a href="../src/screens/apks/index.html">Automáticos Android</a>
+        <a href="manu" class="link-external8">Automáticos Android</a>
         <a href="../src/screens/apiatomaticos/index.html">APIs e Bots</a>
         <a href="#contact">Contato</a>
         <a href="#sair" id="logoutBtn">Sair</a>
@@ -201,6 +201,15 @@
               link.addEventListener('click', (event) => {
                   event.preventDefault(); 
                   alert('Esta em desenvolvimento :)');
+              });
+          }
+        });
+        document.querySelectorAll('.link-external8').forEach(link => {
+          
+          if (link.getAttribute('href') === 'manu' || !link.getAttribute('href')) {
+              link.addEventListener('click', (event) => {
+                  event.preventDefault(); 
+                  alert('Em manutenção :)');
               });
           }
         });
