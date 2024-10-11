@@ -317,8 +317,13 @@ span {
   margin: 0.3rem 0 1rem;
 }
 
+.portfolio-layer .alinhar {
+  display: flex;
+}
+
 .portfolio-layer a {
-  display: inline-flex;
+  margin-right: 2rem;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 5rem;
