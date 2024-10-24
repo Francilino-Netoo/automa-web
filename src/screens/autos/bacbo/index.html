@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bac Bo</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Automa<span>Web</span></a>
+      <i class="bx bx-menu" id="menu-icon"></i>
+      <nav class="navbar">
+        <a href="../../../#home" class="active">Início</a>
+        <a href="../../../#portfolio">IAs</a>
+        <a href="../../../#contact">Contato</a>
+        <ul id="desaparecer">
+          <li>
+            <button class="btn ligar">Ligar Automático</button>
+            <button class="btn desligar">Desligar Automático</button>
+          </li>
+        </ul>
+        <ul id="desaparecer1">
+          <li>
+            <button class="btn ligar">Ligar Automático</button>
+            <button class="btn desligar">Desligar Automático</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="configurar">
+        <h1>Faça suas configurações do Robô Automático</h1>
+
+        <!-- Campo para inserir as estratégias -->
+        <label for="estrategia">Adicionar Estratégias:</label>
+        <input
+          type="text"
+          id="estrategia"
+          placeholder="Ex: AAVA=V=2"
+          oninput="validarEstrategia(this)"
+          required
+        />
+        <p id="mensagemErro"></p>
+
+        <button type="submit" class="btn">Salvar Estratégia</button>
+
+        <label for="stopWin">Adicionar Stop Win e Stop Loss:</label>
+        <div class="ajustar">
+          <input
+            type="number"
+            id="stopWin"
+            placeholder="Stop Win Ex: 500"
+            oninput="verificarStops(this)"
+            min="0"
+            step="1"
+            required
+          />
+          <input
+            type="number"
+            id="stopLoss"
+            placeholder="Stop Loss Ex: 0"
+            oninput="verificarStops(this)"
+            min="0"
+            step="1"
+            required
+          />
+        </div>
+        <p id="mensagemErroStop"></p>
+
+        <button type="submit" class="btn">Salvar</button>
+
+        <label for="stopWin">Adicionar Valores:</label>
+        <div class="apostar">
+          <input
+            type="number"
+            id="apostaInicial"
+            placeholder="Aposta Inicial"
+            onblur="validarAposta(this)"
+            min="0"
+            step="0.01"
+            required
+          />
+
+          <input
+            type="number"
+            id="gale1"
+            placeholder="Gale 1"
+            onblur="validarAposta(this)"
+            min="0"
+            step="0.01"
+            required
+          />
+          <input
+            type="number"
+            id="gale2"
+            placeholder="Gale 2"
+            onblur="validarAposta(this)"
+            min="0"
+            step="0.01"
+            required
+          />
+          <input
+            type="number"
+            id="gale3"
+            placeholder="Gale 3"
+            onblur="validarAposta(this)"
+            min="0"
+            step="0.01"
+            required
+          />
+          <input
+            type="number"
+            id="gale4"
+            placeholder="Gale 4"
+            onblur="validarAposta(this)"
+            min="0"
+            step="0.01"
+            required
+          />
+          <input
+            type="number"
+            id="gale5"
+            placeholder="Gale 5"
+            onblur="validarAposta(this)"
+            min="0"
+            step="0.01"
+            required
+          />
+        </div>
+        <p id="mensagemErroStop1"></p>
+
+        <button type="submit" class="btn">Salvar</button>
+
+        <label for="stopWin">Adicionar Ciclo:</label>
+        <div class="apostar">
+          <input
+            type="number"
+            id="stopWin"
+            placeholder="Ciclo"
+            oninput="verificarCiclo(this)"
+            min="0"
+            max="5"
+          />
+        </div>
+        <p id="mensagemErroStop6"></p>
+        <div>
+          <button type="submit" class="btn">Ativar</button>
+          <button type="submit" class="btn">Desativar</button>
+        </div>
+
+        <label for="stopWin">Adicionar Pós Los:</label>
+        <div class="apostar">
+          <input
+            type="number"
+            id="stopWin"
+            placeholder="Pós Los"
+            oninput="verificarPoslos(this)"
+            min="0"
+            step="1"
+            required
+          />
+        </div>
+        <p id="mensagemErroStop7"></p>
+        <div>
+          <button type="submit" class="btn">Ativar</button>
+          <button type="submit" class="btn">Desativar</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function verificarPoslos(input) {
+        const valor = parseInt(input.value);
+        const mensagem = document.getElementById("mensagemErroStop7");
+
+        mensagem.textContent = "";
+
+        if (input.value === "") {
+          return;
+        }
+
+        if (isNaN(valor)) {
+          mensagem.textContent = "Valor inválido! Deve ser um número.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+
+        if (valor < 1 || valor > 5) {
+          mensagem.textContent = "Valor inválido! Deve ser entre 1 e 5.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+      }
+      function verificarCiclo(input) {
+        const valor = parseInt(input.value);
+        const mensagem = document.getElementById("mensagemErroStop6");
+
+        mensagem.textContent = "";
+
+        if (input.value === "") {
+          return;
+        }
+
+        if (isNaN(valor)) {
+          mensagem.textContent = "Valor inválido! Deve ser um número.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+
+        if (valor < 1 || valor > 5) {
+          mensagem.textContent = "Valor inválido! Deve ser entre 1 e 5.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+      }
+
+      function validarAposta(input) {
+        const valor = parseFloat(input.value);
+        const mensagem = document.getElementById("mensagemErroStop1");
+
+        mensagem.textContent = "";
+
+        if (input.value === "") {
+          return;
+        }
+
+        if (valor < 0 || isNaN(valor)) {
+          mensagem.textContent =
+            "Valor inválido! Deve ser um número maior ou igual a 0.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+
+        if (Math.abs(valor % 2.5) > 0.001) {
+          mensagem.textContent =
+            "Valor inválido! Apenas 0 ou múltiplos de 2.5 são permitidos.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+      }
+
+      function verificarStops(input) {
+        const stopWin = parseFloat(document.getElementById("stopWin").value);
+        const stopLoss = parseFloat(document.getElementById("stopLoss").value);
+        const mensagem = document.getElementById("mensagemErroStop");
+
+        mensagem.textContent = "";
+
+        if (input.value === "") {
+          return;
+        }
+
+        if (
+          parseFloat(input.value) < 0 ||
+          !Number.isInteger(parseFloat(input.value))
+        ) {
+          mensagem.textContent =
+            "Valor inválido! Deve ser um número inteiro maior ou igual a 0.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+
+        if (input.id === "stopLoss" && stopLoss > stopWin) {
+          mensagem.textContent = "Stop Loss não pode ser maior que Stop Win.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+
+        if (input.id === "stopWin" && stopWin <= stopLoss) {
+          mensagem.textContent = "Stop Win deve ser maior que Stop Loss.";
+          input.value = "";
+          mensagem.style.color = "red";
+          return;
+        }
+      }
+
+      function validarEstrategia(input) {
+        const regex = /^[AVE]+=[AVE]=\d+$/;
+        const valor = input.value;
+        const mensagem = document.getElementById("mensagemErro");
+
+        if (valor === "") {
+          mensagem.textContent = "";
+        } else if (regex.test(valor)) {
+          mensagem.textContent = "Estratégia válida!";
+          mensagem.style.color = "green";
+        } else {
+          mensagem.textContent = "Formato inválido! Ex: AAVA=V=2, EEVA=A=5";
+          mensagem.style.color = "red";
+        }
+      }
+    </script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="../js/script.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+  </body>
+</html>
