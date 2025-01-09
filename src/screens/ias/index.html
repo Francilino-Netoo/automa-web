@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automação Web</title>
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Automa<span>IAs</span></a>
+
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="../../#home" class="active">Home</a>
+        <a href="#contact">Suporte</a>
+        <a href="#sair" id="logoutBtn">Sair</a>
+      </nav>
+    </header>
+
+    <section class="portfolio" id="portfolio">
+      <div class="porfolio-container">
+        <div class="portfolio-box">
+          <img src="../../images/telinhas/bac.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>IA Bac Bo</h4>
+            <p>
+              Essa IA realiza análises em tempo real, utilizando um banco de
+              dados com mais de 1 milhão de resultados catalogados. Ela emprega
+              aprendizado por reforço, acumulando meses de treinamento, e gera
+              entradas com uma alta probabilidade de acerto!
+            </p>
+            <a href="#" id="ias"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="../../images/telinhas/fut.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>IA Football Studio</h4>
+            <p>
+              Essa IA realiza análises em tempo real, utilizando um banco de
+              dados com mais de 1 milhão de resultados catalogados. Ela emprega
+              aprendizado por reforço, acumulando meses de treinamento, e gera
+              entradas com uma alta probabilidade de acerto!
+            </p>
+            <a href="#" id="ias1"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="../../images/telinhas/ro.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>IA Roleta</h4>
+            <p>
+              Essa IA realiza análises em tempo real, utilizando um banco de
+              dados com mais de 1 milhão de resultados catalogados. Ela emprega
+              aprendizado por reforço, acumulando meses de treinamento, e gera
+              entradas com uma alta probabilidade de acerto!
+            </p>
+            <a href="#" id="ias2"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="../../images/telinhas/sto.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>IA Stock Market</h4>
+            <p>
+              Essa IA realiza análises em tempo real, utilizando um banco de
+              dados com mais de 1 milhão de resultados catalogados. Ela emprega
+              aprendizado por reforço, acumulando meses de treinamento, e gera
+              entradas com uma alta probabilidade de acerto!
+            </p>
+            <a href="#" id="ias3"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 class="heading">Contate <span>Me!</span></h2>
+      <form action="#">
+        <div class="input-box">
+          <input
+            type="text"
+            id="name"
+            placeholder="Escreva seu nome"
+            required
+          />
+        </div>
+
+        <textarea
+          id="message"
+          cols="30"
+          rows="10"
+          placeholder="Sua mensagem"
+          required
+        ></textarea>
+
+        <button type="button" class="btn" id="sendMessageBtn">
+          Enviar Mensagem
+        </button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-text">
+        <p>
+          Copyright &copy; 2024 por Programador Afobado | Todos os direitos
+          reservados.
+        </p>
+      </div>
+      <div class="footer-iconTop">
+        <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script src="../../js/script.js"></script>
+    <script>
+      document
+        .getElementById("sendMessageBtn")
+        .addEventListener("click", function () {
+          const name = document.getElementById("name").value;
+
+          const message = document.getElementById("message").value;
+
+          if (!name || !message) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+          }
+
+          const whatsappMessage = `Olá, meu nome é ${name}.\n Mensagem: ${message}`;
+
+          const whatsappLink = `https://api.whatsapp.com/send?phone=5511985101114&text=${encodeURIComponent(
+            whatsappMessage
+          )}`;
+
+          window.open(whatsappLink, "_blank");
+        });
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".link-external7").forEach((link) => {
+          if (
+            link.getAttribute("href") === "dese" ||
+            !link.getAttribute("href")
+          ) {
+            link.addEventListener("click", (event) => {
+              event.preventDefault();
+              alert("Esta em desenvolvimento :)");
+            });
+          }
+        });
+      });
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("visita");
+          window.location.href = "../../../index.html";
+        });
+
+      document.getElementById("ias").addEventListener("click", async () => {
+        const token = localStorage.getItem("authToken");
+        const userID = localStorage.getItem("userID");
+        localStorage.removeItem("visita");
+        if (!token && !userID) {
+          alert("Você não tem acesso a essa ferramenta.");
+        } else {
+          window.location.href = "../games/bacbo/index.html";
+        }
+      });
+
+      document.getElementById("ias1").addEventListener("click", async () => {
+        const token = localStorage.getItem("authToken");
+        const userID = localStorage.getItem("userID");
+        localStorage.removeItem("visita");
+        if (!token && !userID) {
+          alert("Você não tem acesso a essa ferramenta.");
+        } else {
+          window.location.href = "../games/football/index.html";
+        }
+      });
+
+      document.getElementById("ias2").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+        if (token) {
+          alert(
+            "Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro."
+          );
+        } else {
+          window.location.href = "../games/roleta/index.html";
+        }
+      });
+
+      document.getElementById("ias3").addEventListener("click", async () => {
+        const token = localStorage.getItem("authToken");
+        const userID = localStorage.getItem("userID");
+        localStorage.removeItem("visita");
+        if (!token && !userID) {
+          alert("Você não tem acesso a essa ferramenta.");
+        } else {
+          window.location.href = "../games/stok/index.html";
+        }
+      });
+      const userID = localStorage.getItem("userID");
+      const estadoEndpoint = `http://192.168.0.104:5002/estado?userID=${userID}`; // Passando o userID como parâmetro na URL
+
+      const verificarEstado = async () => {
+        if (!userID) {
+          alert("Usuário não encontrado.");
+          window.location.href = "/login.html"; // Redireciona para a página de login
+          return;
+        }
+
+        try {
+          // Faz a requisição ao endpoint com GET e passando o userID como parâmetro
+          const response = await fetch(estadoEndpoint, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json", // Apenas cabeçalhos padrão, pois estamos enviando o parâmetro via URL
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Erro ao verificar o estado do usuário.");
+          }
+
+          const data = await response.json();
+          console.log("Resposta do estado:", data);
+
+          // Verifica se a solicitacao é igual a 1
+          if (data.solicitacao === "1") {
+            alert("Sua sessão foi encerrada.");
+            deslogarUsuario();
+          } else {
+            document.getElementById("content").innerText =
+              "Você está logado e pode usar a página.";
+          }
+        } catch (error) {}
+      };
+
+      const deslogarUsuario = () => {
+        // Limpa os dados do usuário e redireciona para a página de login
+        localStorage.removeItem("authToken");
+        window.location.href = "../../../index.html"; // Substitua pelo caminho correto da sua página de login
+      };
+
+      // Chama a verificação ao carregar a página
+      window.onload = verificarEstado;
+    </script>
+  </body>
+</html>

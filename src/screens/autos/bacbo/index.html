@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bac Bo</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Automa<span>Bots</span></a>
+
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="../../../index.html">Home</a>
+        <a href="#" id="gear-icon"><i class="bi bi-gear"></i></a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="imgagem">
+        <img id="gameImage" src="" />
+      </div>
+
+      <div class="configurar" id="config-container">
+        <label for="stopWin">Enviar E-mail e Senha</label>
+        <div class="ajustar">
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="Email"
+            pattern="^[\w\.\-]+@[\w\.\-]+\.\w{2,}$"
+            title="Por favor, insira um endereço de email válido no formato exemplo@dominio.com"
+          />
+          <input
+            required
+            type="password"
+            id="password"
+            placeholder="Senha"
+            required
+          />
+          <i
+            class="bx bx-show toggle-password"
+            id="toggle-password"
+            style="cursor: pointer; margin-left: -25px"
+          ></i>
+        </div>
+        <p id="mensagemErroStop"></p>
+
+        <button type="submit" class="btn" onclick="enviar()">Enviar</button>
+
+        <label for="estrategia">Adicionar Estratégias:</label>
+        <input
+          type="text"
+          id="estrategia"
+          placeholder="Ex: AAVA=V=2"
+          oninput="validarEstrategia(this)"
+          required
+        />
+        <p id="mensagemErro"></p>
+        <div class="esses-aqui">
+          <button type="button" class="btn" onclick="salvarEstrategia()">
+            Salvar
+          </button>
+          <button type="button" class="btn" onclick="verEstrategias()">
+            Estratégias
+          </button>
+        </div>
+        <label for="stopWin">Adicionar Stop Win e Stop Loss:</label>
+        <div class="ajustar">
+          <input
+            type="number"
+            id="stopWin"
+            placeholder="Stop Win Ex: 500"
+            oninput="verificarStops(this)"
+            min="0"
+            step="1"
+            required
+          />
+          <input
+            type="number"
+            id="stopLoss"
+            placeholder="Stop Loss Ex: 0"
+            oninput="verificarStops(this)"
+            min="0"
+            step="1"
+            required
+          />
+        </div>
+        <p id="mensagemErroStop"></p>
+
+        <button type="submit" class="btn" onclick="salvarStops()">
+          Salvar
+        </button>
+
+        <div class="dividir-container">
+          <div class="apostar">
+            <label for="stopWin">Aposta Normal:</label>
+            <input
+              type="number"
+              id="g0"
+              placeholder="Aposta Inicial"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+
+            <input
+              type="number"
+              id="g1"
+              placeholder="Gale 1"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <input
+              type="number"
+              id="g2"
+              placeholder="Gale 2"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <input
+              type="number"
+              id="g3"
+              placeholder="Gale 3"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <input
+              type="number"
+              id="g4"
+              placeholder="Gale 4"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <input
+              type="number"
+              id="g5"
+              placeholder="Gale 5"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <button type="submit" class="btn" id="salvarBtn">Salvar</button>
+            <p id="mensagemErroStop1"></p>
+          </div>
+
+          <div class="cobrir-empate">
+            <label for="stopWin">Cobrir Empate:</label>
+            <input
+              type="number"
+              id="e0"
+              placeholder="Aposta Inicial"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+
+            <input
+              type="number"
+              id="e1"
+              placeholder="Gale 1"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <input
+              type="number"
+              id="e2"
+              placeholder="Gale 2"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <input
+              type="number"
+              id="e3"
+              placeholder="Gale 3"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <input
+              type="number"
+              id="e4"
+              placeholder="Gale 4"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <input
+              type="number"
+              id="e5"
+              placeholder="Gale 5"
+              onblur="validarAposta(this)"
+              min="0"
+              step="0.01"
+              required
+            />
+            <button type="submit" class="btn" id="salvarBtn1">Salvar</button>
+            <p id="mensagemErroStop1"></p>
+          </div>
+        </div>
+        <label for="ciclos">Cobrir Empate?:</label>
+
+        <p id="mensagemErroStop6"></p>
+        <div class="botoes-ativas">
+          <button type="button" class="btn" onclick="cobrirEmpate()">
+            Sim
+          </button>
+          <button type="button" class="btn" onclick="naoEmpate()">Não</button>
+        </div>
+
+        <label for="ciclos">Adicionar Ciclo:</label>
+        <div class="apostar">
+          <input
+            type="number"
+            id="ciclos"
+            placeholder="Ciclo"
+            oninput="verificarCiclo(this)"
+            min="0"
+            max="5"
+          />
+        </div>
+        <p id="mensagemErroStop6"></p>
+        <div class="botoes-ativas">
+          <button type="button" class="btn" onclick="ativarCiclo()">
+            Ativar
+          </button>
+          <button type="button" class="btn" onclick="desativarCiclo()">
+            Desativar
+          </button>
+        </div>
+        <label for="poses">Adicionar Pós Los:</label>
+        <div class="apostar">
+          <input
+            type="number"
+            id="poses"
+            placeholder="Pós Los"
+            oninput="verificarPoslos(this)"
+            min="0"
+            max="5"
+          />
+        </div>
+        <p id="mensagemErroStop9"></p>
+        <div class="botoes-ativas">
+          <button type="button" class="btn" onclick="ativarPoslos()">
+            Ativar
+          </button>
+          <button type="button" class="btn" onclick="desativarPoslos()">
+            Desativar
+          </button>
+        </div>
+        <label for="saldo">Usar saldo DEMO?</label>
+        <div class="apostar">
+          <input
+            type="number"
+            id="saldo"
+            placeholder="Saldo"
+            oninput="verificarDemo(this)"
+            min="1"
+            max="500000000"
+          />
+        </div>
+        <p id="mensagemErroStop9"></p>
+        <div class="botoes-ativas">
+          <button type="button" class="btn" onclick="ativarDemo()">Sim</button>
+          <button type="button" class="btn" onclick="desativarDemo()">
+            Não
+          </button>
+        </div>
+      </div>
+
+      <div class="imagens-container hidden" id="content-area">
+        <div class="manual-container">
+          <div class="ajustar load" id="draggable-resizable">
+            <div id="api-message1">🔔 Aguarde a entrada 🔔</div>
+          </div>
+          <div class="ajustar load" id="draggable-resizable">
+            <h1>Aposta:</h1>
+            <div id="api-message6">Valor</div>
+            <h1>Empate:</h1>
+            <div id="api-message7">Valor</div>
+          </div>
+        </div>
+        <div class="manual-container">
+          <div class="ajustar load1" id="draggable-resizable">
+            <h1>Resultado em tempo real</h1>
+            <div id="api-message2"></div>
+          </div>
+        </div>
+        <div class="manual-container">
+          <div class="ajustar load" id="draggable-resizable">
+            <h1>Saldo:</h1>
+            <div id="api-message3">Saldo</div>
+            <h1>Stop Win:</h1>
+            <div id="api-message4">Stop Win</div>
+            <h1>Stop Los:</h1>
+            <div id="api-message5">Stop Los</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tela-game" id="tela-game">
+        <div class="ligar-bot" id="botao-container">
+          <button type="button" class="btn ligar" onclick="liga()">
+            Ligar
+          </button>
+          <button type="button" class="btn desligar" onclick="desliga()">
+            Desligar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modalEstrategias" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <h1>
+          <span class="stop-win">Stop Win: ${dados.stopwin}</span>
+          <span class="stop-los">Stop Los: {stoplos}</span> | Ciclo: {ciclo}
+          {ciclo1} | Pós Los: {poslos} {poslos1}
+        </h1>
+        <h1 id="apostaInicial">
+          Aposta Inicial: {g0} | G1: {g1} | G2: {g2} | G3: {g3} | G4: {g4} | G5:
+          {g5}
+        </h1>
+        <h1 id="apostas-empate">
+          Aposta Empate: {e0} | G1: {e1} | G2: {e2} | G3: {e3} | G4: {e4} | G5:
+          {e5}
+        </h1>
+        <h2>Estrategias Salvas:</h2>
+        <ul id="estrategiasSalvas"></ul>
+      </div>
+    </div>
+
+    <script src="../js/mensagens.js"></script>
+    <script src="../js/ajustres.js"></script>
+    <script src="../js/container.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="../js/script.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      const apiUrl = "http://192.168.0.104:5002/vericar_ligardesliga";
+      const token = localStorage.getItem("authToken");
+
+      async function checkLigardesliga() {
+        try {
+          const response = await fetch(`${apiUrl}?token=${token}`);
+          const data = await response.json();
+
+          if (response.ok) {
+            const ligardesliga = data.ligardesliga;
+
+            if (ligardesliga === 0 || ligardesliga === "0") {
+              document
+                .getElementById("content-area")
+                .classList.remove("hidden");
+              const imgagem = document.querySelector(".imgagem");
+              imgagem.style.display = "none";
+            } else {
+              document.getElementById("content-area").classList.add("hidden");
+            }
+          } else {
+            console.error("Erro na API:", data.message);
+          }
+        } catch (error) {
+          console.error("Erro ao se conectar à API:", error);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        checkLigardesliga();
+      });
+
+      document
+        .getElementById("toggle-password")
+        .addEventListener("click", function () {
+          const passwordInput = document.getElementById("password");
+
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            this.classList.add("bx-hide");
+            this.classList.remove("bx-show");
+          } else {
+            passwordInput.type = "password";
+            this.classList.add("bx-show");
+            this.classList.remove("bx-hide");
+          }
+        });
+
+      function atualizarImagemDoJogo() {
+        const user_id = localStorage.getItem("userID");
+
+        if (!user_id) {
+          console.error("User ID não encontrado");
+          return;
+        }
+
+        fetch(`http://192.168.0.104:5002/jogo_escolhido?user_id=${user_id}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const gameEscolhido = data.game;
+            const casaEscolhido = data.casa;
+
+            let imageUrl = "../../../images/telinhas/default.png";
+
+            if (["Blaze", "JonBet", "Br4bet"].includes(casaEscolhido)) {
+              if (gameEscolhido === "BacBo") {
+                imageUrl = "../../../images/telinhas/mega.png";
+              } else if (gameEscolhido === "Football") {
+                imageUrl = "../../../images/telinhas/super.png";
+              } else if (gameEscolhido === "Bacara") {
+                imageUrl = "../../../images/telinhas/4.png";
+              }
+            }
+
+            if (["SeguroBet", "SeuBet", "Betfair"].includes(casaEscolhido)) {
+              if (gameEscolhido === "BacBo") {
+                imageUrl = "../../../images/telinhas/bac.png";
+              } else if (gameEscolhido === "Football") {
+                imageUrl = "../../../images/telinhas/fut.png";
+              } else if (gameEscolhido === "Bacara") {
+                imageUrl = "../../../images/telinhas/3.png";
+              }
+            }
+
+            document.getElementById("gameImage").src = imageUrl;
+          })
+          .catch((error) => {
+            console.error("Erro ao consultar o jogo escolhido:", error);
+          });
+      }
+
+      const userID = localStorage.getItem("userID");
+      const estadoEndpoint = `http://192.168.0.104:5002/estado?userID=${userID}`; // Passando o userID como parâmetro na URL
+
+      const verificarEstado = async () => {
+        if (!userID) {
+          window.location.href = "../../../../../index.html"; // Redireciona para a página de login
+          return;
+        }
+
+        try {
+          // Faz a requisição ao endpoint com GET e passando o userID como parâmetro
+          const response = await fetch(estadoEndpoint, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json", // Apenas cabeçalhos padrão, pois estamos enviando o parâmetro via URL
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Erro ao verificar o estado do usuário.");
+          }
+
+          const data = await response.json();
+          console.log("Resposta do estado:", data);
+
+          // Verifica se a solicitacao é igual a 1
+          if (data.solicitacao === "1") {
+            Swal.fire({
+              icon: "warning",
+              text: "Sua sessão foi encerrada.",
+              confirmButtonText: "Entendido",
+              customClass: {
+                popup: "custom-swal", // Class for the popup
+                title: "custom-swal-title", // Custom class for title
+                confirmButton: "custom-swal-confirm", // Custom class for button
+              },
+            });
+            deslogarUsuario();
+          } else {
+            document.getElementById("content").innerText =
+              "Você está logado e pode usar a página.";
+          }
+        } catch (error) {}
+      };
+
+      const deslogarUsuario = () => {
+        window.location.href = "../../../../../index.html"; // Substitua pelo caminho correto da sua página de login
+      };
+
+      // Chama a verificação ao carregar a página
+      window.onload = verificarEstado;
+      window.onload = atualizarImagemDoJogo;
+    </script>
+  </body>
+</html>

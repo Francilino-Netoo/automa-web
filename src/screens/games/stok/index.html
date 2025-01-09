@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Market</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Automa<span>Web</span></a>
+      <i class="bx bx-menu" id="menu-icon"></i>
+      <nav class="navbar">
+        <a href="../../../#home" class="active">Início</a>
+        <a href="../../../#portfolio">IAs</a>
+        <a href="../../../#contact">Contato</a>
+        <ul id="desaparecer">
+          <li>
+            <button class="btn ligar">Ligar IA</button>
+            <button class="btn desligar">Desligar IA</button>
+          </li>
+        </ul>
+        <ul id="desaparecer1">
+          <li>
+            <button class="btn ligar">Ligar IA</button>
+            <button class="btn desligar">Desligar IA</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="imagens-container" id="content-area">
+      <div class="manual-container">
+        <div class="ajustar load" id="draggable-resizable">
+          <div id="api-message1">🔔 Espere um sinal da IA 🔔</div>
+        </div>
+
+        <img
+          id="project-image"
+          src="../../../images/telinhas/sto.png"
+          alt="IA Football Studio"
+        />
+      </div>
+      <div class="video-container hide" id="video-container"></div>
+    </div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="../js/script.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const token =
+          localStorage.getItem("authToken") || "Token não encontrado";
+        const videoContainer = document.getElementById("video-container");
+        const projectImage = document.getElementById("project-image");
+        const apiMessage1Div = document.getElementById("api-message1");
+
+        const draggableResizable = document.getElementById(
+          "draggable-resizable"
+        );
+
+        const loadingIndicator = document.createElement("div");
+        loadingIndicator.textContent = "Carregando vídeo...";
+        loadingIndicator.classList.add("loading-indicator");
+
+        const socketConnection = () => {
+          const socket = io("wss://automa-cassinos.dev.br");
+
+          socket.on("sto", (data) => {
+            if (data && typeof data === "object" && data.possivel_sinal) {
+              const message = data.possivel_sinal;
+              apiMessage1Div.innerHTML = `<p>${message}</p>`;
+            } else {
+              apiMessage1Div.innerHTML = `<p>Dados inválidos recebidos (sto)</p>`;
+            }
+          });
+
+          socket.on("connect_error", (error) => {
+            console.error("Erro na conexão:", error);
+            alert("Erro ao conectar ao WebSocket. Por favor, tente novamente.");
+          });
+        };
+
+        if (token === "Token não encontrado") {
+          window.location.href = "../../../../index.html";
+          return;
+        }
+
+        const loadVideo = async () => {
+          if (token) {
+            try {
+              videoContainer.appendChild(loadingIndicator);
+              const response = await fetch(
+                `https://automa-cassinos.dev.br/stoke?token=${encodeURIComponent(
+                  token
+                )}`,
+                { method: "GET" }
+              );
+              const data = await response.json();
+              videoContainer.removeChild(loadingIndicator);
+
+              if (data.videoUrl) {
+                videoContainer.innerHTML = `<iframe id="video-frame" src="${data.videoUrl}" frameborder="0"></iframe>`;
+                videoContainer.classList.remove("hide");
+                projectImage.classList.add("hide");
+
+                updateButtonStates("IA Ligada", "Desligar IA");
+
+                const videoFrame = document.getElementById("video-frame");
+                videoFrame.addEventListener("load", () => {
+                  draggableResizable.style.display = "block";
+                  draggableResizable.style.display = "grid";
+                });
+
+                videoFrame.addEventListener("error", () => {
+                  alert(
+                    "Erro ao carregar o vídeo. Por favor, tente novamente mais tarde."
+                  );
+                });
+              } else {
+                alert("Erro ao obter o link de vídeo.");
+              }
+            } catch (error) {
+              videoContainer.removeChild(loadingIndicator);
+              alert("Erro na conexão. Por favor, tente novamente.");
+            }
+          } else {
+            alert("Token não encontrado. Por favor, faça o login novamente.");
+          }
+        };
+
+        const closeVideo = () => {
+          videoContainer.innerHTML = "";
+          videoContainer.classList.add("hide");
+          projectImage.classList.remove("hide");
+          draggableResizable.style.display = "none"; // Ocultar a div
+          updateButtonStates("Ligar IA", "IA Desligada");
+        };
+
+        const updateButtonStates = (ligarText, desligarText) => {
+          document.querySelectorAll(".btn.ligar").forEach((button) => {
+            button.textContent = ligarText;
+          });
+          document.querySelectorAll(".btn.desligar").forEach((button) => {
+            button.textContent = desligarText;
+          });
+        };
+
+        const attachButtonEvents = () => {
+          document.querySelectorAll(".btn.ligar").forEach((button) => {
+            button.addEventListener("click", () => {
+              loadVideo();
+              socketConnection(); // Conecta ao WebSocket ao ligar a IA
+            });
+          });
+
+          document.querySelectorAll(".btn.desligar").forEach((button) => {
+            button.addEventListener("click", closeVideo);
+          });
+        };
+
+        attachButtonEvents();
+
+        const resizeHandle = draggableResizable.querySelector(".resize-handle");
+
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        const startDrag = (e) => {
+          if (e.target === resizeHandle) return;
+          isDragging = true;
+          dragOffsetX = e.clientX
+            ? e.clientX - draggableResizable.offsetLeft
+            : e.touches[0].clientX - draggableResizable.offsetLeft;
+          dragOffsetY = e.clientY
+            ? e.clientY - draggableResizable.offsetTop
+            : e.touches[0].clientY - draggableResizable.offsetTop;
+          document.body.style.userSelect = "none";
+        };
+
+        const onDrag = (e) => {
+          if (isDragging) {
+            const clientX = e.clientX || e.touches[0].clientX;
+            const clientY = e.clientY || e.touches[0].clientY;
+            draggableResizable.style.left = `${clientX - dragOffsetX}px`;
+            draggableResizable.style.top = `${clientY - dragOffsetY}px`;
+          }
+        };
+
+        const stopDrag = () => {
+          isDragging = false;
+          document.body.style.userSelect = "auto";
+        };
+        draggableResizable.addEventListener("mousedown", startDrag);
+        draggableResizable.addEventListener("touchstart", startDrag, {
+          passive: true,
+        });
+        document.addEventListener("mousemove", onDrag);
+        document.addEventListener("touchmove", onDrag, { passive: true });
+        document.addEventListener("mouseup", stopDrag);
+        document.addEventListener("touchend", stopDrag, { passive: true });
+      });
+      const userID = localStorage.getItem("userID");
+      const estadoEndpoint = `http://192.168.0.104:5002/estado?userID=${userID}`; // Passando o userID como parâmetro na URL
+
+      const verificarEstado = async () => {
+        if (!userID) {
+          window.location.href = "../../../../../index.html"; // Redireciona para a página de login
+          return;
+        }
+
+        try {
+          // Faz a requisição ao endpoint com GET e passando o userID como parâmetro
+          const response = await fetch(estadoEndpoint, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json", // Apenas cabeçalhos padrão, pois estamos enviando o parâmetro via URL
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Erro ao verificar o estado do usuário.");
+          }
+
+          const data = await response.json();
+          console.log("Resposta do estado:", data);
+
+          // Verifica se a solicitacao é igual a 1
+          if (data.solicitacao === "1") {
+            Swal.fire({
+              icon: "warning",
+              text: "Sua sessão foi encerrada.",
+              confirmButtonText: "Entendido",
+              customClass: {
+                popup: "custom-swal", // Class for the popup
+                title: "custom-swal-title", // Custom class for title
+                confirmButton: "custom-swal-confirm", // Custom class for button
+              },
+            });
+            deslogarUsuario();
+          } else {
+            document.getElementById("content").innerText =
+              "Você está logado e pode usar a página.";
+          }
+        } catch (error) {}
+      };
+
+      const deslogarUsuario = () => {
+        window.location.href = "../../../../../index.html"; // Substitua pelo caminho correto da sua página de login
+      };
+
+      // Chama a verificação ao carregar a página
+      window.onload = verificarEstado;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

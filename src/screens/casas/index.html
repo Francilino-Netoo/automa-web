@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automação Web</title>
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Automa<span>Web</span></a>
+
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="../../#home" class="active">Home</a>
+        <a href="#contact">Suporte</a>
+        <a href="#sair" id="logoutBtn">Sair</a>
+      </nav>
+    </header>
+
+    <section class="portfolio" id="portfolio">
+      <h2 class="heading">Escolha a casa onde o Robô vai operar</h2>
+
+      <div class="porfolio-container">
+        <div class="portfolio-box">
+          <img src="../../images/casas/blaze1.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>Blaze</h4>
+            <p>
+              Essa casa aderiu a regulamentação, isso significa que é segura
+              para operar! Os games disponíveis para ela são os da Pragmatic
+              Play: Bacará, Mega Sig Bac, Supet Trunfo Football.
+            </p>
+            <a href="#" id="ias"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="../../images/casas/jonbet2.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>JonBet</h4>
+            <p>
+              Essa casa aderiu a regulamentação, isso significa que é segura
+              para operar! Os games disponíveis para ela são os da Pragmatic
+              Play: Bacará, Mega Sig Bac, Supet Trunfo Football.
+            </p>
+            <a href="#" id="ias1"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="../../images/casas/betfair.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>Betfair</h4>
+            <p>
+              Essa casa aderiu a regulamentação, isso significa que é segura
+              para operar! Os games disponíveis para ela são os da Pragmatic
+              Play: Bacará, Mega Sig Bac, Supet Trunfo Football.
+            </p>
+            <a href="#" id="ias2"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="../../images/casas/br4bet3.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>Br4bet</h4>
+            <p>
+              Essa casa aderiu a regulamentação, isso significa que é segura
+              para operar! Os games disponíveis para ela são os da Pragmatic
+              Play: Bacará, Mega Sig Bac, Supet Trunfo Football.
+            </p>
+            <a href="#" id="ias3"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="../../images/casas/segurobet4.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>SeguroBet</h4>
+            <p>
+              Essa casa aderiu a regulamentação, isso significa que é segura
+              para operar! Os games disponíveis para ela são os da Evolution
+              Play: Bacará, Bac Bo, Football Studio.
+            </p>
+            <a href="#" id="ias3"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="../../images/casas/seubet.png" alt="" />
+          <div class="portfolio-layer">
+            <h4>SeuBet</h4>
+            <p>
+              Essa casa aderiu a regulamentação, isso significa que é segura
+              para operar! Os games disponíveis para ela são os da Evolution
+              Play: Bacará, Bac Bo, Football Studio.
+            </p>
+            <a href="#" id="ias3"><i class="bx bx-link-external"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 class="heading">Contate <span>Me!</span></h2>
+      <form action="#">
+        <div class="input-box">
+          <input
+            type="text"
+            id="name"
+            placeholder="Escreva seu nome"
+            required
+          />
+        </div>
+
+        <textarea
+          id="message"
+          cols="30"
+          rows="10"
+          placeholder="Sua mensagem"
+          required
+        ></textarea>
+
+        <button type="button" class="btn" id="sendMessageBtn">
+          Enviar Mensagem
+        </button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-text">
+        <p>
+          Copyright &copy; 2024 por Programador Afobado | Todos os direitos
+          reservados.
+        </p>
+      </div>
+      <div class="footer-iconTop">
+        <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script src="../../js/script.js"></script>
+    <script>
+      document
+        .getElementById("sendMessageBtn")
+        .addEventListener("click", function () {
+          const name = document.getElementById("name").value;
+
+          const message = document.getElementById("message").value;
+
+          if (!name || !message) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+          }
+
+          const whatsappMessage = `Olá, meu nome é ${name}.\n Mensagem: ${message}`;
+
+          const whatsappLink = `https://api.whatsapp.com/send?phone=5511985101114&text=${encodeURIComponent(
+            whatsappMessage
+          )}`;
+
+          window.open(whatsappLink, "_blank");
+        });
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".link-external5").forEach((link) => {
+          if (
+            link.getAttribute("href") === "dese" ||
+            !link.getAttribute("href")
+          ) {
+            link.addEventListener("click", (event) => {
+              event.preventDefault();
+              alert(
+                "Atenção! Os automáticos web estão em desenvolvimento, caso queira usar Apps Androids é so clicar em Automáticos Android :)"
+              );
+            });
+          }
+        });
+        document.querySelectorAll(".link-external6").forEach((link) => {
+          if (
+            link.getAttribute("href") === "dese" ||
+            !link.getAttribute("href")
+          ) {
+            link.addEventListener("click", (event) => {
+              event.preventDefault();
+              alert(
+                "Só é uma demonstração, ele esta dispobivél no site de Automáticos Android :)"
+              );
+            });
+          }
+        });
+        document.querySelectorAll(".link-external7").forEach((link) => {
+          if (
+            link.getAttribute("href") === "dese" ||
+            !link.getAttribute("href")
+          ) {
+            link.addEventListener("click", (event) => {
+              event.preventDefault();
+              alert("Esta em desenvolvimento :)");
+            });
+          }
+        });
+      });
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("visita");
+          window.location.href = "../../../index.html";
+        });
+
+      function toggleText(event) {
+        event.preventDefault();
+        const serviceBox = event.target.closest(".services-box");
+        const textContent = serviceBox.querySelector(".text-content");
+
+        if (textContent.classList.contains("expanded")) {
+          textContent.classList.remove("expanded");
+          serviceBox.classList.remove("expanded");
+          event.target.textContent = "Ler Mais";
+        } else {
+          textContent.classList.add("expanded");
+          serviceBox.classList.add("expanded");
+          event.target.textContent = "Ler Menos";
+        }
+      }
+      document.getElementById("ias").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+        console.log("token aqui porra ", token);
+
+        if (token) {
+          alert(
+            "Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro."
+          );
+        } else {
+          window.location.href = "../games/bacbo/index.html";
+        }
+      });
+
+      document.getElementById("ias1").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+        if (token) {
+          alert(
+            "Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro."
+          );
+        } else {
+          window.location.href = "../games/football/index.html";
+        }
+      });
+
+      document.getElementById("ias2").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+        if (token) {
+          alert(
+            "Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro."
+          );
+        } else {
+          window.location.href = "../games/roleta/index.html";
+        }
+      });
+
+      document.getElementById("ias3").addEventListener("click", async () => {
+        const token = localStorage.getItem("visita");
+
+        if (token) {
+          alert(
+            "Você está como visitante! As ferramentas estão disponíveis apenas para quem fez o cadastro."
+          );
+        } else {
+          window.location.href = "../games/stok/index.html";
+        }
+      });
+    </script>
+  </body>
+</html>
