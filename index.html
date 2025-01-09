@@ -98,7 +98,7 @@
       async function verifyToken(token) {
         try {
           const response = await fetch(
-            "http://192.168.0.104:5002/refresh_bac",
+            "https://automa-web.app.br/refresh_bac",
             {
               method: "POST",
               headers: {
@@ -151,7 +151,7 @@
 
           try {
             const response = await fetch(
-              "http://192.168.0.104:5002/login_bac",
+              "https://automa-web.app.br/login_bac",
               {
                 method: "POST",
                 headers: {
@@ -165,6 +165,7 @@
             if (response.ok) {
               localStorage.setItem("authToken", data.token);
               localStorage.setItem("userID", data.user_id);
+              localStorage.removeItem("visita");
               window.location.href = "./src/index.html";
             } else {
               Swal.fire({
