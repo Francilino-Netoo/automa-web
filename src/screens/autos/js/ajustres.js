@@ -7,7 +7,7 @@ async function verEstrategias() {
 
   try {
     const response = await fetch(
-      `http://192.168.0.104:5002/estrategias?token=${token}`,
+      `https://automa-cassinos.dev.br/estrategias?token=${token}`,
       {
         method: "GET",
       }
@@ -38,7 +38,7 @@ async function verEstrategias() {
     }
 
     const dadosResponse = await fetch(
-      `http://192.168.0.104:5002/dados?token=${token}`
+      `https://automa-cassinos.dev.br/dados?token=${token}`
     );
     const dados = await dadosResponse.json();
     console.log(dados.e0);
@@ -87,7 +87,7 @@ async function liga() {
     const requestBody = JSON.stringify({ ligadesliga: 0 });
 
     const response = await fetch(
-      `http://192.168.0.104:5002/ligar_robo_bacbo?token=${token}&userID=${userID}`,
+      `https://automa-cassinos.dev.br/ligar_robo_bacbo?token=${token}&userID=${userID}`,
       {
         method: "POST",
         headers: {
@@ -127,7 +127,7 @@ async function desliga() {
     const requestBody = JSON.stringify({ ligadesliga: 1 });
 
     const response = await fetch(
-      `http://192.168.0.104:5002/desligar_robo_bacbo?token=${token}&userID=${userID}`,
+      `https://automa-cassinos.dev.br/desligar_robo_bacbo?token=${token}&userID=${userID}`,
       {
         method: "POST",
         headers: {
@@ -190,7 +190,7 @@ function ativarPoslos() {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/posloses?token=${token}`, {
+  fetch(`https://automa-cassinos.dev.br/posloses?token=${token}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -229,7 +229,7 @@ function desativarPoslos() {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/posloses?token=${token}`, {
+  fetch(`https://automa-cassinos.dev.br/posloses?token=${token}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -292,7 +292,7 @@ function ativarCiclo() {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/ciclo?token=${token}`, {
+  fetch(`https://automa-cassinos.dev.br/ciclo?token=${token}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -331,7 +331,7 @@ function desativarCiclo() {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/ciclo?token=${token}`, {
+  fetch(`https://automa-cassinos.dev.br/ciclo?token=${token}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -398,7 +398,7 @@ document.getElementById("salvarBtn").addEventListener("click", function (e) {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/adicionar_valores?token=${token}`, {
+  fetch(`https://automa-cassinos.dev.br/adicionar_valores?token=${token}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -436,7 +436,7 @@ document.getElementById("salvarBtn1").addEventListener("click", function (e) {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/adicionar_valores_e?token=${token}`, {
+  fetch(`https://automa-cassinos.dev.br/adicionar_valores_e?token=${token}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -515,7 +515,7 @@ async function salvarStops() {
 
   try {
     const response = await fetch(
-      `http://192.168.0.104:5002/stops?token=${token}`,
+      `https://automa-cassinos.dev.br/stops?token=${token}`,
       {
         method: "POST",
         headers: {
@@ -590,7 +590,7 @@ async function salvarEstrategia() {
 
   try {
     const response = await fetch(
-      `http://192.168.0.104:5002/estrategias?token=${token}`,
+      `https://automa-cassinos.dev.br/estrategias?token=${token}`,
       {
         method: "POST",
         headers: {
@@ -627,7 +627,7 @@ async function deletarEstrategia(index) {
 
   try {
     const response = await fetch(
-      `http://192.168.0.104:5002/estrategias/${index}?token=${token}`,
+      `https://automa-cassinos.dev.br/estrategias/${index}?token=${token}`,
       {
         method: "DELETE",
       }
@@ -698,7 +698,7 @@ function ativarDemo() {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/saldo_demo?user_id=${user_id}`, {
+  fetch(`https://automa-cassinos.dev.br/saldo_demo?user_id=${user_id}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -734,13 +734,16 @@ function desativarDemo() {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/desativa_saldo_demo?user_id=${user_id}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ usar_demo: "desativada", user_id: user_id }),
-  })
+  fetch(
+    `https://automa-cassinos.dev.br/desativa_saldo_demo?user_id=${user_id}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ usar_demo: "desativada", user_id: user_id }),
+    }
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro ao desativar ciclo.");
@@ -784,7 +787,7 @@ async function enviar() {
 
   try {
     const response = await fetch(
-      `http://192.168.0.104:5002/casas?user_id=${user_id}`,
+      `https://automa-cassinos.dev.br/casas?user_id=${user_id}`,
       {
         method: "POST",
         headers: {
@@ -820,7 +823,7 @@ function cobrirEmpate() {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/empate?token=${token}`, {
+  fetch(`https://automa-cassinos.dev.br/empate?token=${token}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -853,7 +856,7 @@ function naoEmpate() {
     return;
   }
 
-  fetch(`http://192.168.0.104:5002/empate?token=${token}`, {
+  fetch(`https://automa-cassinos.dev.br/empate?token=${token}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

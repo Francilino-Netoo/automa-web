@@ -112,7 +112,7 @@
             });
 
             const response = await fetch(
-              `http://192.168.0.104:5002/ligar_robo_bacbo_ias?token=${token}`,
+              `https://automa-cassinos.dev.br/ligar_robo_bacbo_ias?token=${token}`,
               {
                 method: "POST",
                 headers: {
@@ -151,7 +151,7 @@
             });
 
             const response = await fetch(
-              `http://192.168.0.104:5002/desligar_robo_bacbo_ias?token=${token}`,
+              `https://automa-cassinos.dev.br/desligar_robo_bacbo_ias?token=${token}`,
               {
                 method: "POST",
                 headers: {
@@ -191,7 +191,7 @@
 
                 try {
                   const response = await fetch(
-                    `http://192.168.0.104:5002/video?user_id=${userID}`,
+                    `https://automa-cassinos.dev.br/video?user_id=${userID}`,
                     { method: "GET" }
                   );
 
@@ -312,7 +312,7 @@
       });
 
       const userID = localStorage.getItem("userID");
-      const estadoEndpoint = `http://192.168.0.104:5002/estado?userID=${userID}`; // Passando o userID como parâmetro na URL
+      const estadoEndpoint = `https://automa-cassinos.dev.br/estado?userID=${userID}`; // Passando o userID como parâmetro na URL
 
       const verificarEstado = async () => {
         if (!userID) {

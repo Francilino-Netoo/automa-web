@@ -384,7 +384,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-      const apiUrl = "http://192.168.0.104:5002/vericar_ligardesliga";
+      const apiUrl = "https://automa-cassinos.dev.br/vericar_ligardesliga";
       const token = localStorage.getItem("authToken");
 
       async function checkLigardesliga() {
@@ -440,7 +440,9 @@
           return;
         }
 
-        fetch(`http://192.168.0.104:5002/jogo_escolhido?user_id=${user_id}`)
+        fetch(
+          `https://automa-cassinos.dev.br/jogo_escolhido?user_id=${user_id}`
+        )
           .then((response) => response.json())
           .then((data) => {
             const gameEscolhido = data.game;
@@ -476,7 +478,7 @@
       }
 
       const userID = localStorage.getItem("userID");
-      const estadoEndpoint = `http://192.168.0.104:5002/estado?userID=${userID}`; // Passando o userID como parâmetro na URL
+      const estadoEndpoint = `https://automa-cassinos.dev.br/estado?userID=${userID}`; // Passando o userID como parâmetro na URL
 
       const verificarEstado = async () => {
         if (!userID) {
