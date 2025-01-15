@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   configContainer.style.display = "none";
 
-  const apiUrl = "http://192.168.0.104:5002/vericar_ligardesliga";
+  const apiUrl = "https://automa-cassinos.dev.br/vericar_ligardesliga";
   const token = localStorage.getItem("authToken");
 
   if (token) {

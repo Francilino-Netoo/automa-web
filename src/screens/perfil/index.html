@@ -266,21 +266,20 @@
         }
       });
       const userID = localStorage.getItem("userID");
-      const estadoEndpoint = `https://automa-cassinos.dev.br/estado?userID=${userID}`; // Passando o userID como parâmetro na URL
+      const estadoEndpoint = `https://automa-cassinos.dev.br/estado?userID=${userID}`;
 
       const verificarEstado = async () => {
         if (!userID) {
           alert("Usuário não encontrado.");
-          window.location.href = "/login.html"; // Redireciona para a página de login
+          window.location.href = "/login.html";
           return;
         }
 
         try {
-          // Faz a requisição ao endpoint com GET e passando o userID como parâmetro
           const response = await fetch(estadoEndpoint, {
             method: "GET",
             headers: {
-              "Content-Type": "application/json", // Apenas cabeçalhos padrão, pois estamos enviando o parâmetro via URL
+              "Content-Type": "application/json",
             },
           });
 
@@ -291,7 +290,6 @@
           const data = await response.json();
           console.log("Resposta do estado:", data);
 
-          // Verifica se a solicitacao é igual a 1
           if (data.solicitacao === "1") {
             alert("Sua sessão foi encerrada.");
             deslogarUsuario();
@@ -308,12 +306,10 @@
       };
 
       const deslogarUsuario = () => {
-        // Limpa os dados do usuário e redireciona para a página de login
         localStorage.removeItem("authToken");
-        window.location.href = "../../../../index.html"; // Substitua pelo caminho correto da sua página de login
+        window.location.href = "../../../../index.html";
       };
 
-      // Chama a verificação ao carregar a página
       window.onload = verificarEstado;
     </script>
   </body>
