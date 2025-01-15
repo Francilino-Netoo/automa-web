@@ -16,8 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const socket = io(`http://192.168.0.104:5027/`);
-
+    const socket = io("https://automa-cassinos.dev.br", {
+      path: "/socket.io/server2",
+      transports: ["websocket"],
+    });
     socket.on("connect", () => {
       socket.emit("auth", token);
     });

@@ -103,6 +103,7 @@ section {
   animation: floatImage 4s ease-in-out infinite;
   border-radius: 50%;
   box-shadow: 0 0 1rem var(--cor-container);
+  margin-left: 2rem;
 }
 @keyframes floatImage {
   0% {
