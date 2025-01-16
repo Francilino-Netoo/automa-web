@@ -157,7 +157,11 @@
           ) {
             link.addEventListener("click", (event) => {
               event.preventDefault();
-              alert("Esta em desenvolvimento :)");
+              Swal.fire({
+                icon: "warning",
+                text: "Está em desenvolvimento :)",
+                confirmButtonText: "Ok",
+              });
             });
           }
         });
