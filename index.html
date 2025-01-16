@@ -136,6 +136,7 @@
 
       window.onload = async function () {
         const token = localStorage.getItem("authToken");
+        console.log("Aqui ele ", token);
         if (token) {
           await verifyToken(token);
         }
@@ -165,6 +166,7 @@
 
             const data = await response.json();
             if (response.ok) {
+              console.log("Aqui ele ", data);
               localStorage.setItem("authToken", data.token);
               localStorage.setItem("userID", data.user_id);
               localStorage.removeItem("visita");

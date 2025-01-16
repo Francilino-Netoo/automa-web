@@ -76,21 +76,22 @@
         let socket;
         const socketConnection = () => {
           const userID = localStorage.getItem("userID");
-          if (!userID) {
+          const token = localStorage.getItem("authToken");
+          if (!userID && !token) {
             console.error("userID não encontrado no localStorage");
             return;
           }
 
           const socket = io("https://automa-cassinos.dev.br", {
             path: "/socket.io/server1",
-            transports: ["websocket"],
-            query: { user_id: userID },
+            query: { user_id: userID, token: token },
+            timeout: 10000, // 20 segundos
           });
 
+          // Evento para quando a conexão for bem-sucedida
           socket.on("connect", () => {
             console.log("Conectado ao servidor WebSocket");
-
-            socket.emit("user_connected", { userID });
+            socket.emit("autenticar", { user_id: userID, token: token });
           });
 
           socket.on("bacbo", (data) => {
